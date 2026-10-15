@@ -1,14 +1,16 @@
 {
   "devDependencies": {
+    "http-server": "^14.1.1",
     "jest": "^30.5.1"
   },
   "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "serve": "http-server . -c-1 -o"
   },
   "jest": {
     "testPathIgnorePatterns": [
-        "_site"
+      "_site"
     ]
   },
   "transform": {}
