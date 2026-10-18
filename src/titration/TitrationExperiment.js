@@ -5,11 +5,12 @@ import RingStand from "./RingStand.js";
 import ButterflyClamp from "./ButterflyClamp.js";
 import Electrode from "./Electrode.js";
 import SerologicalPipet from "./SerologicalPipet.js";
+import VolumetricFlask from "./VolumetricFlask.js";
 
 export default class TitrationExperiment {
   cylinder10Ml = new Cylinder(10);
   cylinder25Ml = new Cylinder(25);
-  cylinder50Ml = new Cylinder(50);  
+  volumetricFlask = new VolumetricFlask(); 
   beaker1 = new Beaker();
   beaker2 = new Beaker();
   beaker3 = new Beaker();
