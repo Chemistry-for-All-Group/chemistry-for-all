@@ -20,6 +20,7 @@ export default class TitrationExperiment {
   butterflyClamp = new ButterflyClamp();
   serologicalPipet = new SerologicalPipet();
   indicatorElectrode = new Electrode();
+  referenceElectrode = new Electrode();
 }
 
 export var titrationExperiment = new TitrationExperiment();
