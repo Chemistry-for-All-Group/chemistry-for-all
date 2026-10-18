@@ -4,6 +4,7 @@ import Buret from "./Buret.js";
 import RingStand from "./RingStand.js";
 import ButterflyClamp from "./ButterflyClamp.js";
 import Electrode from "./Electrode.js";
+import SerologicalPipet from "./SerologicalPipet.js";
 
 export default class TitrationExperiment {
   cylinder10Ml = new Cylinder(10);
@@ -16,6 +17,7 @@ export default class TitrationExperiment {
   buret = new Buret();
   ringStand = new RingStand();
   butterflyClamp = new ButterflyClamp();
+  serologicalPipet = new SerologicalPipet();
   indicatorElectrode = new Electrode();
 }
 
