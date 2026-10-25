@@ -1,4 +1,4 @@
-export default class RingStand {
+class RingStand {
   connectedButterflyClamp = null;
 
   connectButterflyClamp(butterflyClamp) {
@@ -14,3 +14,5 @@ export default class RingStand {
     return this.connectedButterflyClamp != null;
   }
 }
+
+export default RingStand;

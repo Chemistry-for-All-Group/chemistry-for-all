@@ -4,7 +4,7 @@ import Water from "./liquids/Water.js";
 /**
  * Represents an object that can be filled with multiple types of liquid at once.
  */
-export default class MultiFillableObject {
+class MultiFillableObject {
   /**
    * Stores the current liquids that are contained in this object.
    * 
@@ -222,3 +222,5 @@ export default class MultiFillableObject {
       objectToTransferTo.addLiquidMap(this.removeLiquid(amount, liquidType));
   }
 }
+
+export default MultiFillableObject;

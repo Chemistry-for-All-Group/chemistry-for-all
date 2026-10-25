@@ -1,5 +1,7 @@
 import Liquid from "./Liquid.js";
 
-export default class SodiumChloride extends Liquid {
+class SodiumChloride extends Liquid {
   static molarConcentration = 0.04;
 }
+
+export default SodiumChloride;

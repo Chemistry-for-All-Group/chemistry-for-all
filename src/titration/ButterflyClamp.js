@@ -5,7 +5,7 @@ import Buret from "./Buret.js";
  * 
  * Used for logically connecting a Buret to a RingStand.
  */
-export default class ButterflyClamp {
+class ButterflyClamp {
   /**
    * Represents the Buret that is currently attached to this ButterflyClamp.
    * 
@@ -51,3 +51,5 @@ export default class ButterflyClamp {
     return this.connectedBuret != null;
   }
 }
+
+export default ButterflyClamp;

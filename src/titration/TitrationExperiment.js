@@ -7,7 +7,7 @@ import Electrode from "./Electrode.js";
 import SerologicalPipet from "./SerologicalPipet.js";
 import VolumetricFlask from "./VolumetricFlask.js";
 
-export default class TitrationExperiment {
+class TitrationExperiment {
   cylinder10Ml = new Cylinder(10);
   cylinder25Ml = new Cylinder(25);
   volumetricFlask = new VolumetricFlask(); 
@@ -23,4 +23,7 @@ export default class TitrationExperiment {
   referenceElectrode = new Electrode();
 }
 
-export var titrationExperiment = new TitrationExperiment();
+var titrationExperiment = new TitrationExperiment();
+
+export default TitrationExperiment;
+export { titrationExperiment };

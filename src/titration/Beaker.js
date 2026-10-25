@@ -11,7 +11,7 @@ import MarchSample from "./liquids/MarchSample.js";
  * 
  * @extends MultiFillableObject
  */
-export default class Beaker extends MultiFillableObject {
+class Beaker extends MultiFillableObject {
   capacity = 50;
 
   /**
@@ -153,3 +153,5 @@ export default class Beaker extends MultiFillableObject {
     }
   }
 }
+
+export default Beaker;

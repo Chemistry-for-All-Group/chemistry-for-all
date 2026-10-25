@@ -1,6 +1,6 @@
 import MultiFillableObject from "./MultiFillableObject.js";
 
-export default class SerologicalPipet extends MultiFillableObject {
+class SerologicalPipet extends MultiFillableObject {
   capacity = 2;
   
   /**
@@ -48,3 +48,5 @@ export default class SerologicalPipet extends MultiFillableObject {
     }
   }
 }
+
+export default SerologicalPipet;

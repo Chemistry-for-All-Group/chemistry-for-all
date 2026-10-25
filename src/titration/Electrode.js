@@ -1,6 +1,6 @@
 import Beaker from "./Beaker.js";
 
-export default class Electrode {
+class Electrode {
   baseElectrodePotential = 0.222;
 
   /**
@@ -42,3 +42,5 @@ export default class Electrode {
     return this.connectedBeaker != null;
   }
 }
+
+export default Electrode;

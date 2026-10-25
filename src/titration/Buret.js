@@ -8,7 +8,7 @@ import Beaker from "./Beaker.js";
  * 
  * @extends MultiFillableObject
  */
-export default class Buret extends MultiFillableObject {
+class Buret extends MultiFillableObject {
   capacity = 50;
 
   /**
@@ -84,3 +84,5 @@ export default class Buret extends MultiFillableObject {
     return this.connectedBeaker != null;
   }
 }
+
+export default Buret;

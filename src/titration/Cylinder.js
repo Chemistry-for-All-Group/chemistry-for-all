@@ -5,6 +5,8 @@ import MultiFillableObject from "./MultiFillableObject.js";
  * 
  * @extends MultiFillableObject
  */
-export default class Cylinder extends MultiFillableObject {
+class Cylinder extends MultiFillableObject {
   capacity = 10;
 }
+
+export default Cylinder;

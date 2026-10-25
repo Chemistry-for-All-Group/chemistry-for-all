@@ -1,7 +1,7 @@
 /**
  * Base class for defining liquids.
  */
-export default class Liquid {
+class Liquid {
   /**
    * The molar concentration of this liquid.
    * 
@@ -13,6 +13,9 @@ export default class Liquid {
 /**
  * Contains values for solubility constants of certain solutions.
  */
-export const SOLUBILITY_CONSTANTS = {
+const SOLUBILITY_CONSTANTS = {
   AgCl: 0.00000000018
 };
+
+export default Liquid;
+export { SOLUBILITY_CONSTANTS };
