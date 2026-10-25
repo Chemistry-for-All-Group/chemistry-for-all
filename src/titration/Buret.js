@@ -33,6 +33,14 @@ export default class Buret extends MultiFillableObject {
     return this.capacity - this.getCurrentLevel();
   }
 
+  /**
+   * Removes a random amount of Liquid within + or - 10% of targetIncrement from the Buret.
+   * 
+   * If there is a Beaker under the Buret, the removed liquid is transferred to
+   * that Beaker.
+   * 
+   * @param {number} targetAmount The desired amount to be released from the Buret.
+   */
   releaseLiquid(targetAmount = 0.1) {
     // Get random number between +/-10% of targetIncrement
     // This adds some amount of error
