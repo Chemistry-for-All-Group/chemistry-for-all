@@ -6,12 +6,23 @@ import Buret from "./Buret.js";
  * Used for logically connecting a Buret to a RingStand.
  */
 export default class ButterflyClamp {
+  /**
+   * Represents the Buret that is currently attached to this ButterflyClamp.
+   * 
+   * Null if nothing is attached.
+   * 
+   * @access private
+   * 
+   * @type {Buret}
+   */
   connectedBuret = null;
 
   /**
    * Attaches the buret to the ButterflyClamp.
    * 
    * Does nothing if a Buret is already connected.
+   * 
+   * @access public
    * 
    * @param {Buret} buret The Buret to connect to the ButterflyClamp.
    */
@@ -22,6 +33,8 @@ export default class ButterflyClamp {
 
   /**
    * Removes the Buret from the ButterflyClamp.
+   * 
+   * @access public
    */
   removeBuret() {
     this.connectedBuret = null;
@@ -29,6 +42,8 @@ export default class ButterflyClamp {
   
   /** 
    * Returns whether or not there is a Buret attached to the ButterflyClamp.
+   * 
+   * @access public
    * 
    * @returns {boolean} True if there is a Buret attached to the ButterflyClamp.
    */
