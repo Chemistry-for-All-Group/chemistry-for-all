@@ -13,7 +13,7 @@ export default class MultiFillableObject {
    * 
    * @access protected
    * 
-   * @type {Map<Liquid, Number>}
+   * @type {Map<Liquid, number>}
    */
   liquids = new Map();
 
@@ -24,7 +24,7 @@ export default class MultiFillableObject {
    * 
    * @access protected
    * 
-   * @type {Number}
+   * @type {number}
    */
   capacity;
 
@@ -33,7 +33,7 @@ export default class MultiFillableObject {
    * 
    * @access public
    * 
-   * @param {Number} capacity Sets the capacity property to this value.
+   * @param {number} capacity Sets the capacity property to this value.
    */
   constructor(capacity) {
     this.capacity = capacity;
@@ -44,7 +44,7 @@ export default class MultiFillableObject {
    * 
    * @access public
    * 
-   * @returns {Boolean} True if this object is at capacity (i.e. no more liquid can be added)
+   * @returns {boolean} True if this object is at capacity (i.e. no more liquid can be added)
    */
   isFull() {
     return this.getCurrentLevel() == this.capacity;
@@ -81,7 +81,7 @@ export default class MultiFillableObject {
    * 
    * @access public
    * 
-   * @param {Number} amountToAdd The amount of liquid to add in mL.
+   * @param {number} amountToAdd The amount of liquid to add in mL.
    * @param {Liquid} liquidType The type of liquid to add (if unspecified, uses Water). 
    */
   addLiquid(amountToAdd, liquidType = Water) {
@@ -107,7 +107,7 @@ export default class MultiFillableObject {
    * 
    * @access public
    * 
-   * @param {Map<Liquid, Number>} liquidMapToAdd A Map of liquids to add to the object.
+   * @param {Map<Liquid, number>} liquidMapToAdd A Map of liquids to add to the object.
    */
   addLiquidMap(liquidMapToAdd) {
     for (const liquid of liquidMapToAdd) {
@@ -129,9 +129,9 @@ export default class MultiFillableObject {
    * 
    * @access public
    * 
-   * @param {Number} amountToRemove The amount of liquid to remove in mL.
+   * @param {number} amountToRemove The amount of liquid to remove in mL.
    * @param {Liquid} liquidType The type of liquid to remove (null if unspecified).
-   * @returns {Map<Liquid, Number>} A map defining what liquids were removed. Keys are the types and values are the amounts in mL.
+   * @returns {Map<Liquid, number>} A map defining what liquids were removed. Keys are the types and values are the amounts in mL.
    */
   removeLiquid(amountToRemove, liquidType = null) {
     // Make copy of liquids to keep track of what liquids have been removed
@@ -168,9 +168,9 @@ export default class MultiFillableObject {
    * 
    * @access private
    * 
-   * @param {Map<Liquid, Number>} liquidMap1 Map with liquid types and amounts in mL as values.
-   * @param {Map<Liquid, Number>} liquidMap2 Map with liquid types and amounts in mL as values.
-   * @returns {Map<Liquid, Number>} The difference in liquid value between liquidMap1 and liquidMap2.
+   * @param {Map<Liquid, number>} liquidMap1 Map with liquid types and amounts in mL as values.
+   * @param {Map<Liquid, number>} liquidMap2 Map with liquid types and amounts in mL as values.
+   * @returns {Map<Liquid, number>} The difference in liquid value between liquidMap1 and liquidMap2.
    */
   liquidMapDifference(liquidMap1, liquidMap2) {
     var differenceMap = new Map();
@@ -193,7 +193,7 @@ export default class MultiFillableObject {
    * 
    * @access public
    * 
-   * @returns {Number} The total amount of liquid contained in the object in mL.
+   * @returns {number} The total amount of liquid contained in the object in mL.
    */
   getCurrentLevel() {
     var total = 0;
@@ -212,7 +212,7 @@ export default class MultiFillableObject {
    * @access public
    * 
    * @param {MultiFillableObject} objectToTransferTo The object to add the liquid to.
-   * @param {Number} amount The amount of liquid to transfer in mL.
+   * @param {number} amount The amount of liquid to transfer in mL.
    * @param {Liquid} liquidType The type of liquid to transfer (null if unspecified). 
    */
   transferLiquid(objectToTransferTo, amount, liquidType = null) {

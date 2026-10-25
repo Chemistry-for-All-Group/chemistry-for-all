@@ -29,8 +29,8 @@ export default class Beaker extends MultiFillableObject {
    * 
    * @param {Liquid} titrandType The titrand to look for in the Beaker (automatically found if unspecified) 
    * @param {Liquid} titrantType The titrant to look for in the Beaker (automatically found if unspecified)
-   * @param {String} solubilityConstantKey The key to use when looking up the solubility constant key, must be in SOLUBILITY_CONSTANTS (automatically found if unspecified)
-   * @returns {Number} The pTitrand of the reaction based on the specified parameters
+   * @param {string} solubilityConstantKey The key to use when looking up the solubility constant key, must be in SOLUBILITY_CONSTANTS (automatically found if unspecified)
+   * @returns {number} The pTitrand of the reaction based on the specified parameters
    */
   getTitrationCurveValue(titrandType = null, titrantType = null, solubilityConstantKey = "") {
     if (titrandType == null || titrantType == null || solubilityConstantKey == "") {
@@ -99,7 +99,7 @@ export default class Beaker extends MultiFillableObject {
    * 
    * @param {Liquid} titrandType The titrand to look for in the Beaker (automatically found if unspecified) 
    * @param {Liquid} titrantType The titrant to look for in the Beaker (automatically found if unspecified)
-   * @returns {Number} The equivalence point of the specified titration reaction or undefined if titrandType is not found in the Beaker.
+   * @returns {number} The equivalence point of the specified titration reaction or undefined if titrandType is not found in the Beaker.
    */
   expectedEquivalencePoint(titrandType = null, titrantType = null) {
     if (titrandType == null || titrantType == null) {
@@ -117,7 +117,7 @@ export default class Beaker extends MultiFillableObject {
    * Attempts to detect what titration reaction should be happening and returns the components based on the contents of the Beaker.
    * 
    * If the reaction is detected, it returns an object with the keys "titrand" of 
-   * type Liquid, "titrant" of type Liquid, and "result" of type String. "result"
+   * type Liquid, "titrant" of type Liquid, and "result" of type string. "result"
    * is a key in SOLUBILITY_CONSTANTS.
    * 
    * This function currently supports the following combinations:

@@ -5,7 +5,7 @@ export default class Liquid {
   /**
    * The molar concentration of this liquid.
    * 
-   * @type {Number}
+   * @type {number}
    */
   static molarConcentration;
 }

@@ -27,7 +27,7 @@ export default class SerologicalPipet extends MultiFillableObject {
 
   /**
    * 
-   * @param {Number} amountToExtract 
+   * @param {number} amountToExtract 
    */
   extractLiquid(amountToExtract) {
     if (this.connectedMultiFillableObject != null) {
@@ -37,7 +37,7 @@ export default class SerologicalPipet extends MultiFillableObject {
 
   /**
    * 
-   * @param {Number} amountToRelease 
+   * @param {number} amountToRelease 
    */
   releaseLiquid(amountToRelease) {
     if (this.connectedMultiFillableObject != null) {

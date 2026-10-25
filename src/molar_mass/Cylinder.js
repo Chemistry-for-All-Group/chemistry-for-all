@@ -15,7 +15,7 @@ export default class Cylinder extends FillableObject {
    * 
    * @access private
    *
-   * @type {Number}
+   * @type {number}
    */
   static AMOUNT_TO_ADD_WHEN_NOT_LEVELED = Math.random();
 
@@ -33,7 +33,7 @@ export default class Cylinder extends FillableObject {
    * 
    * @access private
    * 
-   * @type {Boolean}
+   * @type {boolean}
    */
   isInvertedInTrough = false;
 
@@ -42,7 +42,7 @@ export default class Cylinder extends FillableObject {
    * 
    * @access private
    * 
-   * @type {Boolean}
+   * @type {boolean}
    */
   isLeveledWithTroughWater = false;
 
@@ -92,7 +92,7 @@ export default class Cylinder extends FillableObject {
    * a more accurate reading. The cylinder must first be inverted in a WaterTrough
    * before setting it to be leveled.
    * 
-   * @param {Boolean} state True if cylinder should be leveled with water, false if it should be in position for transferring butane.
+   * @param {boolean} state True if cylinder should be leveled with water, false if it should be in position for transferring butane.
    */
   setIsLeveledWithTroughWater(state) {
     // Must be inverted in trough to level it with trough water
@@ -114,7 +114,7 @@ export default class Cylinder extends FillableObject {
    * This function is intended to be called by the connected tubing and 
    * not directly called by the lighter or view.
    * 
-   * @param {Number} amountToTransfer The amount of water to displace due to the addition of butane.
+   * @param {number} amountToTransfer The amount of water to displace due to the addition of butane.
    */
   transferButane(amountToTransfer) {
     // Only displace water if in the proper set up
