@@ -7,6 +7,9 @@ import Electrode from "./Electrode.js";
 import SerologicalPipet from "./SerologicalPipet.js";
 import VolumetricFlask from "./VolumetricFlask.js";
 
+/**
+ * Contains the equipment needed for the titration experiment.
+ */
 class TitrationExperiment {
   cylinder10Ml = new Cylinder(10);
   cylinder25Ml = new Cylinder(25);
@@ -23,6 +26,11 @@ class TitrationExperiment {
   referenceElectrode = new Electrode();
 }
 
+/**
+ * Instance of TitrationExperiment.
+ * 
+ * @type {TitrationExperiment}
+ */
 var titrationExperiment = new TitrationExperiment();
 
 export default TitrationExperiment;
