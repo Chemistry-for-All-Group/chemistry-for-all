@@ -5,9 +5,33 @@ import { SOLUBILITY_CONSTANTS } from "./liquids/Liquid.js";
 import AprilSample from "./liquids/AprilSample.js";
 import MarchSample from "./liquids/MarchSample.js";
 
+/**
+ * MultifillableObject that represents a beaker and includes functions
+ * for titration calculations of the contents.  
+ * 
+ * @extends MultiFillableObject
+ */
 export default class Beaker extends MultiFillableObject {
   capacity = 50;
 
+  /**
+   * Returns the pTitrand of the reaction based on the specified parameters.
+   * 
+   * pTitrand is equal to the negative log base 10 of the concentration of the 
+   * resulting solution. For example, if the titrandType is SodiumChloride, 
+   * the titrant type is SilverNitrate, and the solubilityConstantKey is AgCl, 
+   * then the result will be -log10([Cl]).
+   * 
+   * If any parameter is set to the default value, the values will be attempted
+   * to be found based on the current contents of the beaker. 
+   * 
+   * @access public
+   * 
+   * @param {Liquid} titrandType The titrand to look for in the Beaker (automatically found if unspecified) 
+   * @param {Liquid} titrantType The titrant to look for in the Beaker (automatically found if unspecified)
+   * @param {String} solubilityConstantKey The key to use when looking up the solubility constant key, must be in SOLUBILITY_CONSTANTS (automatically found if unspecified)
+   * @returns {Number} The pTitrand of the reaction based on the specified parameters
+   */
   getTitrationCurveValue(titrandType = null, titrantType = null, solubilityConstantKey = "") {
     if (titrandType == null || titrantType == null || solubilityConstantKey == "") {
       const reactants = this.solveForReactants();
@@ -67,6 +91,16 @@ export default class Beaker extends MultiFillableObject {
     return pTitrand;
   }
 
+  /**
+   * Returns the equivalence point of the titration reaction happening in the Beaker.
+   * 
+   * If any parameter is set to the default value, the values will be attempted
+   * to be found based on the current contents of the beaker. 
+   * 
+   * @param {Liquid} titrandType The titrand to look for in the Beaker (automatically found if unspecified) 
+   * @param {Liquid} titrantType The titrant to look for in the Beaker (automatically found if unspecified)
+   * @returns {Number} The equivalence point of the specified titration reaction or undefined if titrandType is not found in the Beaker.
+   */
   expectedEquivalencePoint(titrandType = null, titrantType = null) {
     if (titrandType == null || titrantType == null) {
       const reactants = this.solveForReactants();
@@ -79,6 +113,22 @@ export default class Beaker extends MultiFillableObject {
     return undefined;
   }
 
+  /**
+   * Attempts to detect what titration reaction should be happening and returns the components based on the contents of the Beaker.
+   * 
+   * If the reaction is detected, it returns an object with the keys "titrand" of 
+   * type Liquid, "titrant" of type Liquid, and "result" of type String. "result"
+   * is a key in SOLUBILITY_CONSTANTS.
+   * 
+   * This function currently supports the following combinations:
+   * - titrand: SodiumChloride, titrant: SilverNitrate, result: "AgCl"
+   * - titrand: AprilSample, titrant: SilverNitrate, result: "AgCl"
+   * - titrand: MarchSample, titrant: SilverNitrate, result: "AgCl"
+   * 
+   * @access private
+   * 
+   * @returns An object with keys for detected titrand, titrant, and result solution key
+   */
   solveForReactants() {
     if (this.liquids.has(SodiumChloride)) {
       return {
