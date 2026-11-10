@@ -18,3 +18,4 @@ Try the experiments on our [website](https://chemistry-for-all-group.github.io/c
 
 ## Documentation
 - [API Reference](https://chemistry-for-all-group.github.io/chemistry-for-all/docs)
+- [Project Setup](https://chemistry-for-all-group.github.io/chemistry-for-all/docs/tutorial-project-setup.html)
