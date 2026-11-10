@@ -1,31 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Molar Mass Experiment</title>
+		<link rel="stylesheet" href="src/styles.css">
+		<script type="module">
+			import { molarMassExperiment } from "./src/molar_mass/MolarMassExperiment.js";
+			molarMassExperiment.start();
+		</script>
 	</head>
 
 	<body>
-		<script type="module" src="src/molar_mass/MolarMassExperiment.js"></script>
-		<script type="text/javascript" src="src/pageBuilder.js"></script>
-        
-        <!-- Should probably use addEventListener instead on inline 
-         onclick handler, so that we don't need this. This is implemented like 
-         this currently because the front end is being overhauled anyways. -->
-        <script type="module">
-            import { molarMassExperiment } from "/src/molar_mass/MolarMassExperiment.js";
-            window.molarMassExperiment = molarMassExperiment;
-        </script>
+		<header>
+			<h1>Molar Mass of Butane</h1>
+			<p>Collect butane gas over water and use your measurements to find the molar mass of butane.</p>
+			<nav aria-label="Experiment sections">
+				<ul role="list">
+					<li><button type="button" data-view="bench">Lab bench</button></li>
+					<li><button type="button" data-view="procedure">Procedure</button></li>
+				</ul>
+			</nav>
+		</header>
 
-		<div id="body">
-			<h1 id="header">Molar Mass Experiment</h1>
-			<p>Press one of the following buttons to select something:</p>
-			<form>
-				<input type="button" id="cylinderButton" value="Select Cylinder"
-				 onclick="replaceElement('body', cylinderContent, 'back')"><br>
-				<input type="button" value="Select Scale" 
-                    onclick="replaceElement('body', molarMassExperiment.scale.pageContent, 'back', () => setElementContent('weight-reading', 'The scale reads ' + molarMassExperiment.scale.getCurrentMass() + ' g.'))"><br>
-				<input type="button" value="Select Faucet"><br>
-			</form>
-		</div>
+		<p id="announcer" role="status" aria-live="polite"></p>
+
+		<main id="main"></main>
+
+		<footer>
+			<p><a href="index.html">Back to all experiments</a></p>
+		</footer>
+
+		<noscript>This experiment requires JavaScript.</noscript>
+
+		<!-- Views are filled in by src/pageBuilder.js. -->
+		<template id="bench-view">
+			<h2>Lab bench</h2>
+			<p>Choose a piece of equipment to use it.</p>
+			<ul data-slot="stations" data-item-template="button-item"></ul>
+		</template>
+
+		<template id="station-view">
+			<h2 data-slot="title"></h2>
+			<p data-slot="description"></p>
+			<h3>Current state</h3>
+			<ul data-slot="state" data-item-template="text-item"></ul>
+			<h3>Actions</h3>
+			<ul data-slot="actions" data-item-template="button-item"></ul>
+			<button type="button" data-view="bench">Back to lab bench</button>
+		</template>
+
+		<template id="procedure-view">
+			<h2>Procedure</h2>
+			<ol>
+				<li>Read the thermometer and barometer and record the temperature and pressure.</li>
+				<li>Fill the water trough: move it to the sink, turn on the faucet, turn the faucet off, then move the trough back to the lab bench.</li>
+				<li>Move the graduated cylinder into the trough and turn it upside down under the water so it is completely full of water.</li>
+				<li>Place the lighter on the scale, record its initial mass, then take it off the scale.</li>
+				<li>Attach the tubing to the lighter and place the tubing outlet under the cylinder.</li>
+				<li>Press the lighter valve repeatedly to release butane into the cylinder until it holds between about 30 and 45 milliliters of gas. Do not overfill it.</li>
+				<li>Level the water inside the cylinder with the trough water, then read and record the volume of gas.</li>
+				<li>Detach the tubing, weigh the lighter again, and record its final mass.</li>
+				<li>Repeat for more trials: take the cylinder out of the trough, put it back, and turn it upside down again.</li>
+			</ol>
+		</template>
+
+		<template id="text-item">
+			<li data-slot="text"></li>
+		</template>
+
+		<template id="button-item">
+			<li><button type="button" data-slot="label" data-click="click"></button></li>
+		</template>
 	</body>
 </html>

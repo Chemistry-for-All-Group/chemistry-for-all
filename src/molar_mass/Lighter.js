@@ -1,4 +1,4 @@
-import WeightedObject from "./WeightedObject.js ";
+import WeightedObject from "./WeightedObject.js";
 import PressureSensor from "./PressureSensor.js";
 import Thermometer from "./Thermometer.js";
 
