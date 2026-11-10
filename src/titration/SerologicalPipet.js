@@ -1,5 +1,8 @@
 import MultiFillableObject from "./MultiFillableObject.js";
 
+/**
+ * @category Titration
+ */
 class SerologicalPipet extends MultiFillableObject {
   capacity = 2;
   

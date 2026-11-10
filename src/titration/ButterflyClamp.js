@@ -4,6 +4,8 @@ import Buret from "./Buret.js";
  * Represents a ButterflyClamp.
  * 
  * Used for logically connecting a Buret to a RingStand.
+ * 
+ * @category Titration
  */
 class ButterflyClamp {
   /**

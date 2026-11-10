@@ -3,6 +3,8 @@ import Water from "./liquids/Water.js";
 
 /**
  * Represents an object that can be filled with multiple types of liquid at once.
+ * 
+ * @category Titration
  */
 class MultiFillableObject {
   /**

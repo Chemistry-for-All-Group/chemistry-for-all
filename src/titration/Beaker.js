@@ -9,6 +9,7 @@ import MarchSample from "./liquids/MarchSample.js";
  * MultifillableObject that represents a beaker and includes functions
  * for titration calculations of the contents.  
  * 
+ * @category Titration
  * @extends MultiFillableObject
  */
 class Beaker extends MultiFillableObject {

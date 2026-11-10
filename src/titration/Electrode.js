@@ -2,6 +2,8 @@ import Beaker from "./Beaker.js";
 
 /**
  * Represents an electrode circuit used for measuring a titration.
+ * 
+ * @category Titration
  */
 class Electrode {
   /**

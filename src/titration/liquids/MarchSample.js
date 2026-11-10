@@ -3,6 +3,8 @@ import Liquid from "./Liquid.js";
 /**
  * The March sample from the titration experiment.
  * 
+ * @category Titration
+ * @subcategory Liquids
  * @extends Liquid
  */
 class MarchSample extends Liquid {

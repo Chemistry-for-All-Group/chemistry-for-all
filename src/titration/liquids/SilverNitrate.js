@@ -3,6 +3,8 @@ import Liquid from "./Liquid.js";
 /**
  * Represents 0.010 M silver nitrate.
  * 
+ * @category Titration
+ * @subcategory Liquids
  * @extends Liquid
  */
 class SilverNitrate extends Liquid {
