@@ -15,7 +15,20 @@
     "templates": {
         "cleverLinks": false,
         "monospaceLinks": false,
-        "search": true
+        "search": true,
+        "better-docs": {
+            "name": "Chemistry for All",
+            "navLinks": [
+                {
+                    "label": "GitHub",
+                    "href": "https://github.com/Chemistry-for-All-Group/chemistry-for-all"
+                },
+                {
+                    "label": "Website",
+                    "href": "https://chemistry-for-all-group.github.io/chemistry-for-all/"
+                }
+            ]
+        }
     },
     "opts": {
         "destination": "docs/",
