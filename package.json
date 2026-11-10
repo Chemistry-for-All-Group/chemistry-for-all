@@ -2,14 +2,17 @@
   "devDependencies": {
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
+    "better-docs": "^2.7.3",
     "http-server": "^14.1.1",
     "jest": "^30.5.1",
-    "jest-environment-jsdom": "^30.5.2"
+    "jest-environment-jsdom": "^30.5.2",
+    "jsdoc": "^4.0.5"
   },
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "serve": "http-server . -c-1 -o"
+    "serve": "http-server . -c-1 -o",
+    "docs": "./node_modules/.bin/jsdoc -c jsdoc.json" 
   },
   "jest": {
     "testPathIgnorePatterns": [
