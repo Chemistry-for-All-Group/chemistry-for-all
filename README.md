@@ -1,5 +1,6 @@
 # Chemistry for All
-Accessible versions of Chemistry World Second Life experiments designed with blind users in mind.
+Accessible versions of Chemistry World experiments from Second Life designed
+with blind users in mind.
 
 Try the experiments on our [website](https://chemistry-for-all-group.github.io/chemistry-for-all/).
 
