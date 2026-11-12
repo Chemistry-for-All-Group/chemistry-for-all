@@ -103,3 +103,22 @@ legend {
   display: none;
 }
 
+/* Tables of readings (titration report). */
+table {
+  border-collapse: collapse;
+  margin: 0.5em 0;
+}
+caption {
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: 0.25em;
+}
+th,
+td {
+  border: 2px solid #595959;
+  padding: 0.25em 0.75em;
+  text-align: left;
+}
+.note:empty {
+  display: none;
+}

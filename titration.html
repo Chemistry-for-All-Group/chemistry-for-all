@@ -5,15 +5,180 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Titration Experiment</title>
 		<link rel="stylesheet" href="src/styles.css">
+		<script type="module">
+			import { titrationLab } from "./src/titration/TitrationLab.js";
+			titrationLab.start();
+		</script>
 	</head>
 
 	<body>
-		<main id="body">
-			<h1 id="header">Titration Experiment</h1>
-		</main>
+		<header>
+			<h1>Salinity of Bay Water by Titration</h1>
+			<p>Find the salinity of bay water samples from the San Antonio Bay, collected in March (a rainy month) and April, by titrating their chloride with silver nitrate. Instead of watching for a colour change, you measure the voltage between two electrodes, which jumps sharply at the equivalence point.</p>
+			<nav aria-label="Experiment sections">
+				<ul role="list">
+					<li><button type="button" data-view="bench">Lab bench</button></li>
+					<li><button type="button" data-view="procedure">Procedure</button></li>
+					<li><button type="button" data-view="report">Report</button></li>
+				</ul>
+			</nav>
+		</header>
+
+		<p id="announcer" role="status" aria-live="polite"></p>
+
+		<main id="main"></main>
 
 		<footer>
 			<p><a href="index.html">Back to all experiments</a></p>
 		</footer>
+
+		<noscript>This experiment requires JavaScript.</noscript>
+
+		<!-- Views are filled in by src/pageBuilder.js. Lists are numbered (<ol>)
+		     so it is easy to keep track of position within them. -->
+		<template id="bench-view">
+			<h2>Lab bench</h2>
+			<p>Choose a piece of equipment to use it.</p>
+			<ol data-slot="stations" data-item-template="button-item"></ol>
+		</template>
+
+		<template id="station-view">
+			<h2 data-slot="title"></h2>
+			<p data-slot="description"></p>
+			<h3>Current state</h3>
+			<ol data-slot="state" data-item-template="text-item"></ol>
+			<h3>Actions</h3>
+			<ol class="actions" data-slot="actions" data-item-template="button-item"></ol>
+			<button type="button" data-view="bench">Back to lab bench</button>
+		</template>
+
+		<template id="procedure-view">
+			<h2>Procedure</h2>
+			<p>Each step names the lab bench station where you do it. Record each reading in the Report as you go. The equivalence point is where the voltage jumps the most between two readings.</p>
+			<ol>
+				<li>Attach the clamp to the ring stand, then clamp the buret to it.</li>
+				<li>At the silver nitrate cylinder, measure 15 milliliters, rinse the buret, and pour the rest into the buret.</li>
+				<li>Measure 5 milliliters of sodium chloride standard at the sodium chloride cylinder.</li>
+				<li>At the serological pipet, rinse the pipet from the sodium chloride cylinder. Draw 1.0 milliliter, read and record it, then release it into Beaker 1.</li>
+				<li>Fill Beaker 1 to the 10 milliliter mark and place it under the buret.</li>
+				<li>Place the electrodes in Beaker 1.</li>
+				<li>Calculate how much silver nitrate 1.0 milliliter of 0.040 molar sodium chloride needs, and record it.</li>
+				<li>At the buret and voltmeter, read and record a starting reading as the practice titration. Then add silver nitrate, reading and recording after each addition, until the voltage has jumped and levelled off. Near the jump, add 1 drop or 0.1 milliliters at a time.</li>
+				<li>To clean up, take the electrodes out and rinse them, then take Beaker 1 out from under the buret and empty and rinse it.</li>
+				<li>At the serological pipet, rinse the pipet with March bay water. Pipet 1.0 milliliter into each of Beakers 1, 2 and 3, and record the volume once.</li>
+				<li>Fill Beakers 1, 2 and 3 to the 20 milliliter mark.</li>
+				<li>At the silver nitrate cylinder, measure 10 milliliters and pour it into the buret.</li>
+				<li>For the fast titration, titrate Beaker 1 as in steps 5, 6 and 8, recording it as the March fast titration. Add about 0.5 to 1 milliliter at a time to find roughly where the jump is, then clean up as in step 9.</li>
+				<li>Only if the fast titration passed 10 milliliters without a jump: empty and rinse the beakers, pipet 1.0 milliliter of sample into the volumetric flask, then fill the flask to the mark. Redo steps 10 to 13 with the diluted sample from the flask, and answer "Was this sample diluted?" in the report.</li>
+				<li>For the trials, titrate Beaker 2 as March trial 1 and then Beaker 3 as March trial 2, the same way. Add larger amounts until you are about 0.5 milliliters from the jump, then 1 drop or 0.1 milliliters at a time. Clean up after each.</li>
+				<li>Repeat steps 10 to 15 for April bay water.</li>
+				<li>Empty the waste beaker into the labeled waste container.</li>
+				<li>For each sample, average the volume added in trials 1 and 2. The moles of silver nitrate (0.010 moles per liter times liters) equal the moles of sodium chloride. Multiply by 58.44 grams per mole for grams.</li>
+				<li>Salinity in parts per thousand is the grams of sodium chloride divided by the grams of bay water, times 1000. Use 1 gram per milliliter of bay water, or 0.1 grams if it was diluted.</li>
+			</ol>
+		</template>
+
+		<template id="report-view">
+			<h2>Report</h2>
+			<p>Keep track of your measurements and calculations here as you work through the titrations. Nothing is calculated or checked for you. Values are kept while you move between sections, but are cleared if the page is reloaded.</p>
+
+			<h3>Measurements</h3>
+			<div data-slot="samples" data-item-template="sample-section"></div>
+
+			<h3>Calculations</h3>
+			<div data-slot="calculations" data-item-template="trial-fieldset"></div>
+
+			<button type="button" data-click="clear">Clear report</button>
+		</template>
+
+		<template id="trial-fieldset">
+			<fieldset>
+				<legend data-slot="legend"></legend>
+				<div data-slot="fields" data-item-template="number-field"></div>
+			</fieldset>
+		</template>
+
+		<!-- One sample in the report: its own fields, then each titration of it. -->
+		<template id="sample-section">
+			<h4 data-slot="heading"></h4>
+			<fieldset>
+				<legend data-slot="legend"></legend>
+				<div data-slot="fields" data-item-template="number-field"></div>
+			</fieldset>
+			<div data-slot="titrations" data-item-template="titration-fieldset"></div>
+		</template>
+
+		<!-- A titration: a table of the buret and voltmeter readings recorded
+		     during it, then the volume worked out from them. -->
+		<template id="titration-fieldset">
+			<fieldset>
+				<legend data-slot="legend"></legend>
+				<table data-attr-hidden="noReadings">
+					<caption data-slot="caption"></caption>
+					<thead>
+						<tr>
+							<th scope="col">Reading</th>
+							<th scope="col">Buret reading (milliliters)</th>
+							<th scope="col">Voltage (millivolts)</th>
+						</tr>
+					</thead>
+					<tbody data-slot="readings" data-item-template="reading-row"></tbody>
+				</table>
+				<p class="note" data-slot="readingsNote"></p>
+				<button type="button" data-slot="removeLabel" data-click="removeLast"></button>
+				<button type="button" data-slot="clearLabel" data-click="clearReadings"></button>
+				<div data-slot="fields" data-item-template="number-field"></div>
+			</fieldset>
+		</template>
+
+		<template id="reading-row">
+			<tr>
+				<th scope="row" data-slot="number"></th>
+				<td data-slot="buret"></td>
+				<td data-slot="voltage"></td>
+			</tr>
+		</template>
+
+		<!-- type="text" with inputmode="decimal" avoids the accessibility
+		     problems of type="number" while still showing a number keypad. -->
+		<template id="number-field">
+			<div class="field">
+				<label data-slot="label" data-attr-for="id"></label>
+				<input type="text" inputmode="decimal" autocomplete="off" spellcheck="false"
+					data-attr-id="id" data-attr-value="value" data-attr-aria-invalid="invalid"
+					data-attr-aria-describedby="describedBy" data-input="input" data-change="change">
+				<p class="error" data-attr-id="errorId" data-slot="error"></p>
+			</div>
+		</template>
+
+		<!-- A labelled dropdown in the report, styled like the number fields. -->
+		<template id="select-field">
+			<div class="field">
+				<label data-slot="label" data-attr-for="id"></label>
+				<select data-attr-id="id" data-slot="options" data-item-template="option-item" data-change="change"></select>
+			</div>
+		</template>
+
+		<template id="text-item">
+			<li data-slot="text"></li>
+		</template>
+
+		<template id="button-item">
+			<li><button type="button" data-slot="label" data-click="click"></button></li>
+		</template>
+
+		<!-- A dropdown and the button it applies to. The dropdown only stores
+		     the choice; nothing happens until the button is pressed (WCAG 3.2.2). -->
+		<template id="select-action-item">
+			<li class="select-action">
+				<label data-slot="selectLabel" data-attr-for="selectId"></label>
+				<select data-attr-id="selectId" data-slot="options" data-item-template="option-item" data-change="change"></select>
+				<button type="button" data-slot="label" data-click="click"></button>
+			</li>
+		</template>
+
+		<template id="option-item">
+			<option data-slot="text" data-attr-value="value" data-attr-selected="selected"></option>
+		</template>
 	</body>
 </html>
