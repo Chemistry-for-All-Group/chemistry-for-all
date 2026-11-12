@@ -9,7 +9,14 @@ import Beaker from "./Beaker.js";
  * @extends MultiFillableObject
  */
 class Buret extends MultiFillableObject {
-  capacity = 50;
+  /**
+   * @param {number} capacity The most liquid this can hold in mL (defaults to 50).
+   */
+  constructor(capacity = 50) {
+    // Set through the constructor rather than as a field: a field would
+    // replace the capacity passed in (e.g. new Beaker(600) would hold 50 mL).
+    super(capacity);
+  }
 
   /**
    * Represents the Beaker that is directly under the Buret.

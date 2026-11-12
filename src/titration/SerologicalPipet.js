@@ -1,7 +1,14 @@
 import MultiFillableObject from "./MultiFillableObject.js";
 
 class SerologicalPipet extends MultiFillableObject {
-  capacity = 2;
+  /**
+   * @param {number} capacity The most liquid this can hold in mL (defaults to 2).
+   */
+  constructor(capacity = 2) {
+    // Set through the constructor rather than as a field: a field would
+    // replace the capacity passed in (e.g. new Beaker(600) would hold 50 mL).
+    super(capacity);
+  }
   
   /**
    * @type {MultiFillableObject}
