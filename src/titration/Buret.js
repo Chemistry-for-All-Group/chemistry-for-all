@@ -6,6 +6,7 @@ import Beaker from "./Beaker.js";
  * 
  * Used for incrementally adding a solution to a connected Beaker.
  * 
+ * @category Titration
  * @extends MultiFillableObject
  */
 class Buret extends MultiFillableObject {

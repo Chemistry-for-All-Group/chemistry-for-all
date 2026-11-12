@@ -9,6 +9,8 @@ import VolumetricFlask from "./VolumetricFlask.js";
 
 /**
  * Contains the equipment needed for the titration experiment.
+ * 
+ * @category Titration
  */
 class TitrationExperiment {
   cylinder10Ml = new Cylinder(10);
@@ -29,6 +31,7 @@ class TitrationExperiment {
 /**
  * Instance of TitrationExperiment.
  * 
+ * @category Titration
  * @type {TitrationExperiment}
  */
 var titrationExperiment = new TitrationExperiment();
