@@ -39,7 +39,7 @@ export default class Lighter extends WeightedObject {
    * the butane will be transferred through the tubing. Otherwise, the butane will 
    * simply be removed from the lighter like normal.
    *  
-   * @param {Number} targetIncrement The desired amount of butane in mL to be released from the lighter.   
+   * @param {number} targetIncrement The desired amount of butane in mL to be released from the lighter.   
    */
   releaseButane(targetIncrement = 0.5) {
     // Get random number between -0.1 and 0.1, and add to targetIncrement to add
