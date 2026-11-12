@@ -235,9 +235,9 @@ describe("MolarMassExperiment", () => {
   });
 
   describe("measurement messages", () => {
-    test("Should format an empty scale reading to three decimals", () => {
+    test("Should format an empty scale reading to four decimals", () => {
       expect(experiment.readScale()).toBe(
-        "The scale reads 0.000 grams."
+        "The scale reads 0.0000 grams."
       );
     });
 

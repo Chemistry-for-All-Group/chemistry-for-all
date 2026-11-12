@@ -4,41 +4,63 @@
  * Attributes used in the templates:
  *  - data-slot="name": the element's text becomes data[name]. If data[name]
  *    is a list, one copy of the data-item-template is added per item instead
- *    (used for lists of buttons).
- *  - data-click="name": data[name] is run when the element is clicked.
+ *    (used for lists of buttons, table rows, select options, ...). An item can
+ *    use a different template by giving its own `template` id.
+ *  - data-attr-<attribute>="name": sets <attribute> to data[name], e.g.
+ *    data-attr-for="id" sets for="...". true adds an empty attribute (for
+ *    attributes like selected), and false/null/undefined leaves it off.
+ *  - data-click / data-change / data-input="name": data[name] is run when
+ *    that event happens on the element.
  */
 export function fillTemplate(templateId, data = {}) {
   const fragment = document.getElementById(templateId).content.cloneNode(true);
-
-  for (const element of fragment.querySelectorAll('[data-slot]')) {
-    const value = data[element.dataset.slot];
-    if (Array.isArray(value))
-      element.replaceChildren(...value.map((item) => fillTemplate(element.dataset.itemTemplate, item)));
-    else if (value !== undefined)
-      element.textContent = value;
-  }
-
-  for (const element of fragment.querySelectorAll('[data-click]')) {
-    const handler = data[element.dataset.click];
-    if (handler)
-      element.addEventListener('click', handler);
-  }
-
+  // Collect the elements first, so items added from item templates are not filled again.
+  for (const element of [...fragment.querySelectorAll('*')])
+    bindElement(element, data);
   return fragment;
+}
+
+const EVENTS = { click: 'click', change: 'change', input: 'input' };
+
+function bindElement(element, data) {
+  for (const [key, name] of Object.entries(element.dataset)) {
+    const value = data[name];
+
+    if (key === 'slot') {
+      if (Array.isArray(value))
+        element.replaceChildren(...value.map((item) => fillTemplate(item.template ?? element.dataset.itemTemplate, item)));
+      else if (value !== undefined && value !== null)
+        element.textContent = value;
+    }
+    else if (key.startsWith('attr') && key.length > 4) {
+      // dataset turns data-attr-aria-invalid into attrAriaInvalid; turn it back into aria-invalid.
+      const attribute = key.slice(4).replace(/[A-Z]/g, (letter) => '-' + letter.toLowerCase()).slice(1);
+      if (value === true)
+        element.setAttribute(attribute, '');
+      else if (value !== false && value !== null && value !== undefined)
+        element.setAttribute(attribute, String(value));
+    }
+    else if (EVENTS[key] && typeof value === 'function') {
+      element.addEventListener(EVENTS[key], value);
+    }
+  }
 }
 
 /**
  * Shows a message in the #announcer element. Screen readers read it out
- * because it is a live region (role="status" in the HTML).
+ * because it is a live region
  */
 export function announce(message) {
   const region = document.getElementById('announcer');
   // Screen readers only read the message if the text changed, so a
   // non-breaking space is added on every other message. This lets the same
   // message (e.g. pressing the lighter repeatedly) be read again.
-  const suffix = region.textContent.endsWith(' ') ? '' : ' ';
+  const suffix = region.textContent.endsWith(' ') ? '' : ' ';
   region.textContent = message + suffix;
 }
+
+// Controls that keep keyboard focus in the same spot when a view is redrawn.
+const FOCUSABLE = 'button, select, input, summary';
 
 /**
  * Handles switching between views of an experiment.
@@ -70,9 +92,11 @@ export class PageBuilder {
    * @param {String} id name used to open the view, e.g. page.show('bench')
    * @param {String} templateId id of the <template> in the HTML
    * @param {Function} getData returns the data for fillTemplate; called each time the view is drawn
+   * @param {Object} options
+   * @param {String} options.section nav button marked as current while this view is open (defaults to id)
    */
-  addView(id, templateId, getData = () => ({})) {
-    this.views[id] = { templateId, getData };
+  addView(id, templateId, getData = () => ({}), { section = id } = {}) {
+    this.views[id] = { templateId, getData, section };
   }
 
   /**
@@ -98,17 +122,20 @@ export class PageBuilder {
 
   /**
    * Redraws the current view after something in the experiment changed.
-   * Focus goes back to the button in the same spot so keyboard and screen
+   * Focus goes back to the control in the same spot so keyboard and screen
    * reader users don't lose their place.
    */
   refresh() {
-    const index = [...this.root.querySelectorAll('button')].indexOf(document.activeElement);
+    const index = [...this.root.querySelectorAll(FOCUSABLE)].indexOf(document.activeElement);
     this.renderView(this.currentView);
-    const buttons = this.root.querySelectorAll('button');
-    (index >= 0 && buttons.length > 0 ? buttons[Math.min(index, buttons.length - 1)] : this.heading()).focus();
+    const controls = this.root.querySelectorAll(FOCUSABLE);
+    (index >= 0 && controls.length > 0 ? controls[Math.min(index, controls.length - 1)] : this.heading()).focus();
   }
 
-  /** Draws a view into the root and updates the tab title from its heading. */
+  /**
+   * Draws a view into the root, updates the tab title from its heading, and
+   * marks the matching nav button with aria-current.
+   */
   renderView(id) {
     const view = this.views[id];
     this.currentView = id;
@@ -117,6 +144,13 @@ export class PageBuilder {
     // Headings can't normally receive focus; -1 allows focus() without adding it to the tab order.
     heading.tabIndex = -1;
     document.title = this.siteTitle ? `${heading.textContent} - ${this.siteTitle}` : heading.textContent;
+
+    for (const button of document.querySelectorAll('nav [data-view]')) {
+      if (button.dataset.view === view.section)
+        button.setAttribute('aria-current', 'page');
+      else
+        button.removeAttribute('aria-current');
+    }
   }
 
   /** Each view's template should start with an h2. */

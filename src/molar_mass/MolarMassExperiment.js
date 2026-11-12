@@ -6,10 +6,22 @@ import Thermometer from "./Thermometer.js";
 import PressureSensor from "./PressureSensor.js";
 import Tubing from "./Tubing.js";
 import Cylinder from "./Cylinder.js";
+import { MolarMassReport, TRIALS } from "./MolarMassReport.js";
 import { announce, PageBuilder } from "../pageBuilder.js";
 
-// Wording for each location, used in messages like "The lighter is on the scale."
+// Wording for each location
 const PLACE = { bench: 'on the lab bench', sink: 'in the sink', trough: 'in the water trough', scale: 'on the scale' };
+
+/**
+ * Choices for how much butane one press of the lighter valve releases, in mL.
+ * Each press still varies slightly around the chosen amount (see
+ * Lighter.releaseButane).
+ */
+export const RELEASE_INCREMENTS = [0.5, 1, 2, 5];
+
+function milliliters(amount) {
+  return `${amount} ${amount === 1 ? 'milliliter' : 'milliliters'}`;
+}
 
 /**
  * The molar mass of butane experiment.
@@ -32,6 +44,15 @@ export class MolarMassExperiment {
   cylinderLocation = 'bench';
   // 'bench' or 'scale'
   lighterLocation = 'bench';
+
+  // Target amount of butane (mL) released per press of the lighter valve.
+  releaseIncrement = 5;
+
+  report = new MolarMassReport();
+  // Report field chosen in each "Record as" dropdown, by kind
+  recordTargets = { mass: null, volume: null };
+  // The last value read from each instrument, as the text that was shown.
+  lastReadings = { mass: null, volume: null, temperature: null, pressure: null };
 
   toggleSink() {
     if (this.sink.isOn) {
@@ -59,6 +80,7 @@ export class MolarMassExperiment {
   }
 
   moveCylinder(destination) {
+    this.lastReadings.volume = null;
     if (this.cylinderLocation === 'sink')
       this.sink.removeObjectFromSink(this.cylinder);
     if (this.cylinderLocation === 'trough') {
@@ -75,11 +97,13 @@ export class MolarMassExperiment {
   }
 
   invertCylinder() {
+    this.lastReadings.volume = null;
     this.cylinder.invertInWaterTrough();
     return 'You turn the cylinder upside down under the water and rest it on the bottom of the trough. ' + this.gasInCylinder();
   }
 
   setCylinderLeveled(leveled) {
+    this.lastReadings.volume = null;
     this.cylinder.setIsLeveledWithTroughWater(leveled);
     return leveled
       ? 'You lift the cylinder off the tubing outlet and hold it so the water level inside matches the water level in the trough.'
@@ -114,6 +138,7 @@ export class MolarMassExperiment {
   }
 
   moveLighter(destination) {
+    this.lastReadings.mass = null;
     if (destination === 'scale')
       this.scale.addObjectToScale(this.lighter);
     else
@@ -123,44 +148,129 @@ export class MolarMassExperiment {
   }
 
   /**
-   * Presses the lighter valve once, releasing a small amount of butane
-   * (about 0.5 mL, see Lighter.releaseButane). The message says where the
-   * gas went, based on how the equipment is set up.
+   * Presses the lighter valve once, releasing about releaseIncrement mL of
+   * butane
    */
   pressLighterValve() {
     if (this.lighter.mlOfButane <= 0)
       return 'Nothing comes out. The lighter is out of butane.';
 
-    this.lighter.releaseButane();
+    this.lighter.releaseButane(this.releaseIncrement);
+    this.lastReadings.volume = null;
+    const amount = `About ${milliliters(this.releaseIncrement)} of butane`;
 
     if (!this.lighter.connectedTubing)
-      return 'No tubing is attached, so a little butane escapes into the air.';
+      return `No tubing is attached. ${amount} escapes into the air.`;
     if (!this.tubing.connectedCylinder)
-      return 'The tubing outlet is not under the cylinder, so a little butane escapes into the air.';
+      return `The tubing outlet is not under the cylinder. ${amount} escapes into the air.`;
     if (!this.cylinder.isInvertedInTrough || this.cylinder.isLeveledWithTroughWater)
-      return 'The cylinder is not positioned over the outlet, so a few bubbles escape into the air.';
-    return 'A few bubbles of butane rise into the cylinder. ' + this.gasInCylinder();
+      return `The cylinder is not positioned over the outlet. ${amount} bubbles up and escapes into the air.`;
+    return `${amount} bubbles up and rises into the cylinder. ` + this.gasInCylinder();
+  }
+
+  setReleaseIncrement(amount) {
+    if (RELEASE_INCREMENTS.includes(amount))
+      this.releaseIncrement = amount;
   }
 
   readScale() {
-    return `The scale reads ${this.scale.getCurrentMass().toFixed(3)} grams.`;
+    // An analytical balance, read to four decimal places.
+    const mass = this.scale.getCurrentMass().toFixed(4);
+    // Nothing to record from an empty scale.
+    this.lastReadings.mass = this.scale.getCurrentMass() > 0 ? mass : null;
+    return `The scale reads ${mass} grams.`;
   }
 
   readThermometer() {
-    return `The thermometer reads ${Thermometer.temperature.toFixed(1)} degrees Celsius.`;
+    this.lastReadings.temperature = Thermometer.temperature.toFixed(1);
+    return `The thermometer reads ${this.lastReadings.temperature} degrees Celsius.`;
   }
 
   readBarometer() {
-    return `The barometer reads ${PressureSensor.pressure.toFixed(1)} torr.`;
+    this.lastReadings.pressure = PressureSensor.pressure.toFixed(1);
+    return `The barometer reads ${this.lastReadings.pressure} torr.`;
   }
 
   readCylinder() {
+    this.lastReadings.volume = null;
     if (!this.cylinder.isInvertedInTrough)
       return `The upright cylinder holds ${this.cylinder.getCurrentLevel().toFixed(1)} milliliters of water.`;
     const level = this.cylinder.isLeveledWithTroughWater
       ? 'The water inside is level with the trough water.'
       : 'The water inside is not level with the trough water.';
-    return `${level} The gas at the top of the cylinder measures ${this.cylinder.getDisplacedLevel().toFixed(1)} milliliters.`;
+    // Only a reading of the gas in an upside-down cylinder can be recorded.
+    this.lastReadings.volume = this.cylinder.getDisplacedLevel().toFixed(1);
+    return `${level} The gas at the top of the cylinder measures ${this.lastReadings.volume} milliliters.`;
+  }
+
+  readConditions() {
+    return `${this.readThermometer()} ${this.readBarometer()}`;
+  }
+
+  /** The report field a reading of this kind will be recorded in. */
+  recordTarget(kind) {
+    const fields = this.report.fieldsOfKind(kind);
+    return this.recordTargets[kind]
+      ?? fields.find((field) => this.report.get(field.id) === '')?.id
+      ?? fields[0].id;
+  }
+
+  setRecordTarget(kind, fieldId) {
+    if (this.report.fieldsOfKind(kind).some((field) => field.id === fieldId))
+      this.recordTargets[kind] = fieldId;
+  }
+
+  /** Whether an instrument has been read and the reading not yet recorded. */
+  hasReading(kind) {
+    return this.lastReadings[kind] !== null;
+  }
+
+  /** Copies the last reading taken from an instrument into the report. */
+  recordReading(kind, fieldId = this.recordTarget(kind)) {
+    const value = this.lastReadings[kind];
+    if (value === null)
+      return 'Take a reading first, then record it.';
+    const field = this.report.field(fieldId);
+    const previous = this.report.get(fieldId);
+    this.report.set(fieldId, value);
+    this.lastReadings[kind] = null;
+    // Move the dropdown on to the next empty field.
+    if (kind in this.recordTargets)
+      this.recordTargets[kind] = null;
+    const replaced = previous !== '' && previous !== value ? ` It replaces ${previous}.` : '';
+    return `Recorded ${value} ${field.unit} as ${field.fullLabel.charAt(0).toLowerCase() + field.fullLabel.slice(1)} in the report.${replaced}`;
+  }
+
+  recordConditions() {
+    return `${this.recordReading('temperature', 'temperature')} ${this.recordReading('pressure', 'pressure')}`;
+  }
+
+  /**
+   * An action with a "Record as" dropdown that picks which report field the
+   * reading goes into.
+   */
+  recordAction(kind, readLabel) {
+    return {
+      label: 'Record reading in report',
+      focusAfter: readLabel,
+      select: {
+        id: `record-${kind}`,
+        label: 'Record as',
+        value: this.recordTarget(kind),
+        options: this.report.fieldsOfKind(kind).map((field) => {
+          const recorded = this.report.get(field.id);
+          return { value: field.id, text: `${field.fullLabel} (${recorded ? `${recorded} ${field.unit}` : 'empty'})` };
+        }),
+        change: (fieldId) => this.setRecordTarget(kind, fieldId),
+      },
+      run: () => this.recordReading(kind),
+    };
+  }
+
+  recordedState(fieldId) {
+    const field = this.report.field(fieldId);
+    const value = this.report.get(fieldId);
+    return value ? `${field.label} in report: ${value} ${field.unit}.` : `${field.label} is not recorded in the report yet.`;
   }
 
   /**
@@ -222,6 +332,7 @@ export class MolarMassExperiment {
             .map(([place, name]) => ({ label: `Move cylinder to ${name}`, run: () => this.moveCylinder(place) }));
           return [
             { label: 'Read the cylinder', run: () => this.readCylinder() },
+            this.hasReading('volume') ? this.recordAction('volume', 'Read the cylinder') : null,
             this.cylinderLocation === 'trough' && !inverted
               ? { label: 'Turn cylinder upside down under the water', run: () => this.invertCylinder() } : null,
             inverted && !leveled
@@ -257,7 +368,17 @@ export class MolarMassExperiment {
           if (this.lighterLocation === 'scale')
             return [{ label: 'Take lighter off scale', run: () => this.moveLighter('bench') }];
           return [
-            { label: 'Press the lighter valve', run: () => this.pressLighterValve() },
+            {
+              label: 'Press the lighter valve',
+              select: {
+                id: 'release-increment',
+                label: 'Amount per press',
+                value: String(this.releaseIncrement),
+                options: RELEASE_INCREMENTS.map((amount) => ({ value: String(amount), text: `About ${milliliters(amount)}` })),
+                change: (value) => this.setReleaseIncrement(Number(value)),
+              },
+              run: () => this.pressLighterValve(),
+            },
             this.lighter.connectedTubing ? null
               : { label: 'Place lighter on scale', run: () => this.moveLighter('scale') },
           ];
@@ -265,37 +386,73 @@ export class MolarMassExperiment {
       },
       {
         id: 'scale', title: 'Scale',
-        description: 'A digital scale that measures mass to the nearest milligram.',
+        description: 'An analytical balance that measures mass to four decimal places (the nearest tenth of a milligram).',
         state: () => [this.lighterLocation === 'scale' ? 'The lighter is on the scale.' : 'The scale is empty.'],
-        actions: () => [{ label: 'Read the scale', run: () => this.readScale() }],
+        actions: () => [
+          { label: 'Read the scale', run: () => this.readScale() },
+          this.hasReading('mass') ? this.recordAction('mass', 'Read the scale') : null,
+        ],
       },
       {
-        id: 'thermometer', title: 'Thermometer',
-        description: 'Measures the temperature of the room and water.',
-        state: () => [],
-        actions: () => [{ label: 'Read the thermometer', run: () => this.readThermometer() }],
-      },
-      {
-        id: 'barometer', title: 'Barometer',
-        description: 'Measures the air pressure in the room.',
-        state: () => [],
-        actions: () => [{ label: 'Read the barometer', run: () => this.readBarometer() }],
+        id: 'conditions', title: 'Thermometer and barometer',
+        description: 'Measure the temperature and air pressure of the room.',
+        state: () => [this.recordedState('temperature'), this.recordedState('pressure')],
+        actions: () => [
+          { label: 'Read the thermometer and barometer', run: () => this.readConditions() },
+          this.hasReading('temperature') && this.hasReading('pressure')
+            ? { label: 'Record temperature and pressure in report', focusAfter: 'Read the thermometer and barometer', run: () => this.recordConditions() } : null,
+        ],
       },
     ];
   }
 
-  /**
-   * Sets up the page: one view for the bench, one per station, and the
-   * procedure. Called from molar_mass.html.
-   */
+  /** Data for one input in the report form (see the number-field template). */
+  reportFieldData(field) {
+    const error = this.report.error(field.id);
+    return {
+      id: `report-${field.id}`,
+      errorId: `report-${field.id}-error`,
+      label: `${field.label} (${field.unit})`,
+      value: this.report.get(field.id),
+      error,
+      invalid: error ? 'true' : null,
+      describedBy: error ? `report-${field.id}-error` : null,
+      input: (event) => {
+        this.report.set(field.id, event.target.value);
+      },
+      // Errors are only shown once the student leaves the field, so they
+      // are not interrupted while typing.
+      change: (event) => showFieldError(event.target, this.report.error(field.id)),
+    };
+  }
+
   start() {
     const page = new PageBuilder('main', 'Molar Mass Experiment');
     const stations = this.stations();
 
     // Runs an action, announces the result, and redraws the view to show the new state.
+    // focusAfter names a button to move focus to afterwards, for actions
+    // whose own button disappears (recording a reading hides its button).
     const perform = (action) => {
       announce(action.run());
       page.refresh();
+      if (action.focusAfter)
+        [...page.root.querySelectorAll('button')].find((button) => button.textContent === action.focusAfter)?.focus();
+    };
+
+    // An action is a button, or a labelled dropdown followed by a button.
+    const actionItem = (action) => {
+      const item = { label: action.label, click: () => perform(action) };
+      if (!action.select)
+        return item;
+      return {
+        ...item,
+        template: 'select-action-item',
+        selectId: action.select.id,
+        selectLabel: action.select.label,
+        options: action.select.options.map((option) => ({ ...option, selected: option.value === action.select.value })),
+        change: (event) => action.select.change(event.target.value),
+      };
     };
 
     page.addView('bench', 'bench-view', () => ({
@@ -307,13 +464,49 @@ export class MolarMassExperiment {
         title: station.title,
         description: station.description,
         state: station.state().filter(Boolean).map((text) => ({ text })),
-        actions: station.actions().filter(Boolean).map((action) => ({ label: action.label, click: () => perform(action) })),
-      }));
+        actions: station.actions().filter(Boolean).map(actionItem),
+      }), { section: 'bench' });
     }
 
     page.addView('procedure', 'procedure-view');
 
+    const trialGroups = (fieldsFor) => TRIALS.map((trial) => ({
+      legend: trial.name,
+      fields: fieldsFor(trial).map((field) => this.reportFieldData(field)),
+    }));
+
+    // Typing in the report only stores the value; the view is not redrawn,
+    // so focus and the cursor stay in the field being edited.
+    page.addView('report', 'report-view', () => ({
+      conditions: this.report.conditionFields().map((field) => this.reportFieldData(field)),
+      measurements: trialGroups((trial) => this.report.measurementFields(trial)),
+      calculations: trialGroups((trial) => this.report.calculationFields(trial)),
+      finalResults: this.report.finalFields().map((field) => this.reportFieldData(field)),
+      clear: () => {
+        if (!window.confirm('Clear every value in the report? This cannot be undone.'))
+          return;
+        this.report.clear();
+        this.recordTargets = { mass: null, volume: null };
+        announce('The report has been cleared.');
+        page.refresh();
+      },
+    }));
+
     page.show('bench', false);
+  }
+}
+
+/** Shows or hides the error message under a report input. */
+function showFieldError(input, message) {
+  const error = document.getElementById(`${input.id}-error`);
+  error.textContent = message;
+  if (message) {
+    input.setAttribute('aria-invalid', 'true');
+    input.setAttribute('aria-describedby', error.id);
+  }
+  else {
+    input.removeAttribute('aria-invalid');
+    input.removeAttribute('aria-describedby');
   }
 }
 
