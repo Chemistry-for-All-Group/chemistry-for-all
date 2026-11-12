@@ -18,12 +18,88 @@ nav ul {
   display: flex;
   flex-wrap: wrap;
 }
+/* The open section is shown with a thick underline and bold text, not colour alone. */
+nav [aria-current] {
+  font-weight: bold;
+  box-shadow: inset 0 -4px 0 #1a1a1a;
+}
+button,
+select,
+input {
+  font: inherit;
+}
 button {
-  font-size: 1em;
   padding: 0.5em 1em;
   margin: 0.5em 0.5em 0.5em 0;
+}
+select,
+input {
+  padding: 0.4em 0.5em;
+  border: 2px solid #595959;
+  border-radius: 2px;
+  color: #1a1a1a;
+  background-color: #ffffff;
 }
 :focus-visible {
   outline: 3px solid #0b5fff;
   outline-offset: 2px;
 }
+
+/* Numbered lists: room for two-digit numbers, and a gap between items. */
+ol {
+  padding-left: 2.5em;
+}
+ol > li + li {
+  margin-top: 0.25em;
+}
+.actions button {
+  margin: 0.25em 0;
+}
+
+/* A dropdown with the button it applies to. Wraps onto separate lines on narrow screens. */
+.select-action {
+  margin-bottom: 0.5em;
+}
+.select-action label {
+  margin-right: 0.5em;
+}
+.select-action select {
+  max-width: 100%;
+  margin: 0.25em 0.5em 0.25em 0;
+}
+
+/* Report */
+fieldset {
+  margin: 0 0 1em;
+  padding: 0.5em 1em;
+  border: 2px solid #595959;
+}
+legend {
+  font-weight: bold;
+  padding: 0 0.25em;
+}
+.field {
+  margin: 0.5em 0;
+}
+.field label {
+  display: block;
+}
+.field input {
+  width: 10em;
+  max-width: 100%;
+}
+.field input[aria-invalid="true"] {
+  border-color: #b00020;
+  border-width: 3px;
+}
+.error {
+  margin: 0.25em 0 0;
+  padding-left: 0.5em;
+  border-left: 4px solid #b00020;
+  color: #b00020;
+  font-weight: bold;
+}
+.error:empty {
+  display: none;
+}
+
