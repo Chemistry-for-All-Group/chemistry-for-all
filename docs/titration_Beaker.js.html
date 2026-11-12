@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> titration/Beaker.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Chemistry for All</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-project-setup.html">
+                                Project Setup
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/Chemistry-for-All-Group/chemistry-for-all"
+                        >
+                            GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://chemistry-for-all-group.github.io/chemistry-for-all/"
+                        >
+                            Website
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="MolarMassExperiment.html">MolarMassExperiment</a></li><li><a href="PageBuilder.html">PageBuilder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GAS_CONSTANT">GAS_CONSTANT</a></li><li><a href="global.html#announce">announce</a></li><li><a href="global.html#fillTemplate">fillTemplate</a></li><li><a href="global.html#getDisplacedLevel">getDisplacedLevel</a></li><li><a href="global.html#invertInWaterTrough">invertInWaterTrough</a></li><li><a href="global.html#releaseButane">releaseButane</a></li><li><a href="global.html#removeFromWaterTrough">removeFromWaterTrough</a></li><li><a href="global.html#setIsLeveledWithTroughWater">setIsLeveledWithTroughWater</a></li><li><a href="global.html#submergeInWaterTrough">submergeInWaterTrough</a></li><li><a href="global.html#transferButane">transferButane</a></li></ul></div><div class="category"><h2>Titration</h2><h3>Classes / Liquids</h3><ul><li><a href="AprilSample.html">AprilSample</a></li><li><a href="Liquid.html">Liquid</a></li><li><a href="MarchSample.html">MarchSample</a></li><li><a href="SilverNitrate.html">SilverNitrate</a></li><li><a href="SodiumChloride.html">SodiumChloride</a></li><li><a href="Water.html">Water</a></li></ul><h3>Classes</h3><ul><li><a href="Beaker.html">Beaker</a></li><li><a href="Buret.html">Buret</a></li><li><a href="ButterflyClamp.html">ButterflyClamp</a></li><li><a href="Cylinder.html">Cylinder</a></li><li><a href="Electrode.html">Electrode</a></li><li><a href="MultiFillableObject.html">MultiFillableObject</a></li><li><a href="RingStand.html">RingStand</a></li><li><a href="SerologicalPipet.html">SerologicalPipet</a></li><li><a href="TitrationExperiment.html">TitrationExperiment</a></li><li><a href="VolumetricFlask.html">VolumetricFlask</a></li></ul><h3>Global</h3><ul><li><a href="global.html#SOLUBILITY_CONSTANTS">SOLUBILITY_CONSTANTS</a></li><li><a href="global.html#titrationExperiment">titrationExperiment</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>titration/Beaker.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import MultiFillableObject from "./MultiFillableObject.js";
+import SodiumChloride from "./liquids/SodiumChloride.js";
+import SilverNitrate from "./liquids/SilverNitrate.js";
+import { SOLUBILITY_CONSTANTS } from "./liquids/Liquid.js";
+import AprilSample from "./liquids/AprilSample.js";
+import MarchSample from "./liquids/MarchSample.js";
+
+/**
+ * MultifillableObject that represents a beaker and includes functions
+ * for titration calculations of the contents.  
+ * 
+ * @category Titration
+ * @extends MultiFillableObject
+ */
+class Beaker extends MultiFillableObject {
+  capacity = 50;
+
+  /**
+   * Returns the pTitrand of the reaction based on the specified parameters.
+   * 
+   * pTitrand is equal to the negative log base 10 of the concentration of the 
+   * resulting solution. For example, if the titrandType is SodiumChloride, 
+   * the titrant type is SilverNitrate, and the solubilityConstantKey is AgCl, 
+   * then the result will be -log10([Cl]).
+   * 
+   * If any parameter is set to the default value, the values will be attempted
+   * to be found based on the current contents of the beaker. 
+   * 
+   * @access public
+   * 
+   * @param {Liquid} titrandType The titrand to look for in the Beaker (automatically found if unspecified) 
+   * @param {Liquid} titrantType The titrant to look for in the Beaker (automatically found if unspecified)
+   * @param {string} solubilityConstantKey The key to use when looking up the solubility constant key, must be in SOLUBILITY_CONSTANTS (automatically found if unspecified)
+   * @returns {number} The pTitrand of the reaction based on the specified parameters
+   */
+  getTitrationCurveValue(titrandType = null, titrantType = null, solubilityConstantKey = "") {
+    if (titrandType == null || titrantType == null || solubilityConstantKey == "") {
+      const reactants = this.solveForReactants();
+      titrandType = reactants["titrand"];
+      titrantType = reactants["titrant"];
+      solubilityConstantKey = reactants["result"];
+    }
+
+    // Formulas for these calculations were found on the LibreTexts Chemistry 
+    // "Precipitation Titration" page. See the "9.5.1 Titration Curves" section
+    // for the formulas used.
+    // (https://chem.libretexts.org/Ancillary_Materials/Demos_Techniques_and_Experiments/General_Lab_Techniques/Titration/Precipitation_Titration)
+
+    // Get amounts of titrant and titrand (keep at 0 if not found)
+    var amountOfTitrand = 0;
+    var amountOfTitrant = 0;
+    if (this.liquids.has(titrandType)) {
+      amountOfTitrand = this.liquids.get(titrandType);
+    }
+    if (this.liquids.has(titrantType)) {
+      amountOfTitrant = this.liquids.get(titrantType);
+    }
+
+    // Calculation of titrand concentration changes based on whether the titrant
+    // or titrand is in excess, we can use the equivalence point to determine this
+    var titrandConcentration;
+    const equivalencePoint = this.expectedEquivalencePoint(titrandType, titrantType);
+
+    // If titrand and titrant are at equivalent concentrations
+    // Note: this boolean statement measures equality within a certain margin,
+    // this is to prevent values like 3.999 and 4.001 from giving unexpected
+    // values
+    if (Math.abs(amountOfTitrant - equivalencePoint) &lt; 0.001) {
+      titrandConcentration = Math.sqrt(SOLUBILITY_CONSTANTS[solubilityConstantKey]);
+    }
+    // If titrant is in excess
+    else if (amountOfTitrant > equivalencePoint) {
+      const titrantConcentration = 
+        ((titrantType.molarConcentration * amountOfTitrant )
+        - (titrandType.molarConcentration * amountOfTitrand)) / 
+        (amountOfTitrand + amountOfTitrant);
+        
+      titrandConcentration = SOLUBILITY_CONSTANTS[solubilityConstantKey] / titrantConcentration;
+    }
+    // If titrand is in excess
+    else {
+      titrandConcentration = 
+        ((titrandType.molarConcentration * amountOfTitrand)
+        - (titrantType.molarConcentration * amountOfTitrant)) / 
+        (amountOfTitrand + amountOfTitrant);
+    }
+    
+    // Calculate pTitrand with formula: pTitrand = log([titrand])
+    // Note: if titrand is NaCl this would be pCl
+    const pTitrand = -Math.log10(titrandConcentration);
+
+    return pTitrand;
+  }
+
+  /**
+   * Returns the equivalence point of the titration reaction happening in the Beaker.
+   * 
+   * If any parameter is set to the default value, the values will be attempted
+   * to be found based on the current contents of the beaker. 
+   * 
+   * @param {Liquid} titrandType The titrand to look for in the Beaker (automatically found if unspecified) 
+   * @param {Liquid} titrantType The titrant to look for in the Beaker (automatically found if unspecified)
+   * @returns {number} The equivalence point of the specified titration reaction or undefined if titrandType is not found in the Beaker.
+   */
+  expectedEquivalencePoint(titrandType = null, titrantType = null) {
+    if (titrandType == null || titrantType == null) {
+      const reactants = this.solveForReactants();
+      titrandType = reactants["titrand"];
+      titrantType = reactants["titrant"];
+    }
+    if (this.liquids.has(titrandType)) {
+      return (titrandType.molarConcentration * this.liquids.get(titrandType)) / titrantType.molarConcentration;
+    }
+    return undefined;
+  }
+
+  /**
+   * Attempts to detect what titration reaction should be happening and returns the components based on the contents of the Beaker.
+   * 
+   * If the reaction is detected, it returns an object with the keys "titrand" of 
+   * type Liquid, "titrant" of type Liquid, and "result" of type string. "result"
+   * is a key in SOLUBILITY_CONSTANTS.
+   * 
+   * This function currently supports the following combinations:
+   * - titrand: SodiumChloride, titrant: SilverNitrate, result: "AgCl"
+   * - titrand: AprilSample, titrant: SilverNitrate, result: "AgCl"
+   * - titrand: MarchSample, titrant: SilverNitrate, result: "AgCl"
+   * 
+   * @access private
+   * 
+   * @returns An object with keys for detected titrand, titrant, and result solution key
+   */
+  solveForReactants() {
+    if (this.liquids.has(SodiumChloride)) {
+      return {
+        titrand: SodiumChloride,
+        titrant: SilverNitrate,
+        result: "AgCl"
+      }
+    }
+    else if (this.liquids.has(AprilSample)) {
+      return {
+        titrand: AprilSample,
+        titrant: SilverNitrate,
+        result: "AgCl"
+      }
+    }
+    else if (this.liquids.has(MarchSample)) {
+      return {
+        titrand: MarchSample,
+        titrant: SilverNitrate,
+        result: "AgCl"
+      }
+    }
+  }
+}
+
+export default Beaker;</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
+</body>
+</html>

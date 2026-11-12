@@ -3,6 +3,7 @@ import MultiFillableObject from "./MultiFillableObject.js";
 /**
  * MultiFillableObject that represents a volumetric flask.
  * 
+ * @category Titration
  * @extends MultiFillableObject
  */
 class VolumetricFlask extends MultiFillableObject {

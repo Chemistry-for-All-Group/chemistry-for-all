@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Project Setup</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Chemistry for All</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-project-setup.html">
+                                Project Setup
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/Chemistry-for-All-Group/chemistry-for-all"
+                        >
+                            GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://chemistry-for-all-group.github.io/chemistry-for-all/"
+                        >
+                            Website
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar tutorials"
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-project-setup.html">Project Setup</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Tutorial</p>
+                    <h1>Project Setup</h1>
+                </header>
+                <section>
+
+<article>
+    <p>This document describes how to set up the project for development and goes over
+the commands for running tests and updating the documentation.</p>
+<h2>Prerequisites</h2>
+<p>This project uses <a href="https://nodejs.org/en">Node.js</a> and
+<a href="https://www.npmjs.com/">npm</a> to manage dependencies, run tests, and generate
+docs locally.</p>
+<p>If you do not already have Node.js and npm installed follow these
+<a href="https://nodejs.org/en/download">instructions</a> to install them.</p>
+<h2>Setup Instructions</h2>
+<ol>
+<li>Clone the project repository:</li>
+</ol>
+<pre class="prettyprint source lang-bash"><code>git clone git@github.com:Chemistry-for-All-Group/chemistry-for-all.git
+</code></pre>
+<ol start="2">
+<li>Navigate to the <code>chemistry-for-all</code> directory</li>
+</ol>
+<pre class="prettyprint source lang-bash"><code>cd chemistry-for-all
+</code></pre>
+<ol start="3">
+<li>Install npm dependencies:</li>
+</ol>
+<pre class="prettyprint source lang-bash"><code>npm install
+</code></pre>
+<h2>Running Tests</h2>
+<p>To run the project's unit testing suite run the following command in the
+project directory:</p>
+<pre class="prettyprint source lang-bash"><code>npm test
+</code></pre>
+<p>To run a specific test suite run the following command and replace the path
+with the path to the test file:</p>
+<pre class="prettyprint source lang-bash"><code>npm test ./Path/To/Tests/Example.test.js
+</code></pre>
+<h2>Generating Docs</h2>
+<p>To update the documentation files run the following command in the project
+directory:</p>
+<pre class="prettyprint source lang-bash"><code>npm run docs
+</code></pre>
+<h2>Testing Website Locally</h2>
+<p>To run the website locally for testing run the following command in the project
+directory:</p>
+<pre class="prettyprint source lang-bash"><code>npm run serve
+</code></pre>
+</article>
+
+</section>
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
+</body>
+</html>

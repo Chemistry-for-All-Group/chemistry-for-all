@@ -3,6 +3,8 @@ import Liquid from "./Liquid.js";
 /**
  * Represents 0.040 M sodium chloride.
  * 
+ * @category Titration
+ * @subcategory Liquids
  * @extends Liquid
  */
 class SodiumChloride extends Liquid {

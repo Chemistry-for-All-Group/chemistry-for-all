@@ -4,6 +4,8 @@ import ButterflyClamp from "./ButterflyClamp.js";
  * Represents a RingStand.
  * 
  * Used for logically connecting to a ButterflyClamp.
+ * 
+ * @category Titration
  */
 class RingStand {
   /**

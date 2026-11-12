@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> titration/SerologicalPipet.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Chemistry for All</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-project-setup.html">
+                                Project Setup
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/Chemistry-for-All-Group/chemistry-for-all"
+                        >
+                            GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://chemistry-for-all-group.github.io/chemistry-for-all/"
+                        >
+                            Website
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="MolarMassExperiment.html">MolarMassExperiment</a></li><li><a href="PageBuilder.html">PageBuilder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GAS_CONSTANT">GAS_CONSTANT</a></li><li><a href="global.html#announce">announce</a></li><li><a href="global.html#fillTemplate">fillTemplate</a></li><li><a href="global.html#getDisplacedLevel">getDisplacedLevel</a></li><li><a href="global.html#invertInWaterTrough">invertInWaterTrough</a></li><li><a href="global.html#releaseButane">releaseButane</a></li><li><a href="global.html#removeFromWaterTrough">removeFromWaterTrough</a></li><li><a href="global.html#setIsLeveledWithTroughWater">setIsLeveledWithTroughWater</a></li><li><a href="global.html#submergeInWaterTrough">submergeInWaterTrough</a></li><li><a href="global.html#transferButane">transferButane</a></li></ul></div><div class="category"><h2>Titration</h2><h3>Classes / Liquids</h3><ul><li><a href="AprilSample.html">AprilSample</a></li><li><a href="Liquid.html">Liquid</a></li><li><a href="MarchSample.html">MarchSample</a></li><li><a href="SilverNitrate.html">SilverNitrate</a></li><li><a href="SodiumChloride.html">SodiumChloride</a></li><li><a href="Water.html">Water</a></li></ul><h3>Classes</h3><ul><li><a href="Beaker.html">Beaker</a></li><li><a href="Buret.html">Buret</a></li><li><a href="ButterflyClamp.html">ButterflyClamp</a></li><li><a href="Cylinder.html">Cylinder</a></li><li><a href="Electrode.html">Electrode</a></li><li><a href="MultiFillableObject.html">MultiFillableObject</a></li><li><a href="RingStand.html">RingStand</a></li><li><a href="SerologicalPipet.html">SerologicalPipet</a></li><li><a href="TitrationExperiment.html">TitrationExperiment</a></li><li><a href="VolumetricFlask.html">VolumetricFlask</a></li></ul><h3>Global</h3><ul><li><a href="global.html#SOLUBILITY_CONSTANTS">SOLUBILITY_CONSTANTS</a></li><li><a href="global.html#titrationExperiment">titrationExperiment</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>titration/SerologicalPipet.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import MultiFillableObject from "./MultiFillableObject.js";
+
+/**
+ * Multifillable object that represents a serological pipet.
+ * 
+ * Used for extracting liquid from and releasing liquid into a connected
+ * MultiFillableObject.
+ * 
+ * @category Titration
+ * @extends MultiFillableObject
+ */
+class SerologicalPipet extends MultiFillableObject {
+  capacity = 2;
+  
+  /**
+   * Represents the MultiFillableObject that the pipet is in.
+   * 
+   * This object will be filled if releaseLiquid is called or liquid will
+   * be removed from this liquid if extractLiquid is called.
+   * 
+   * @type {MultiFillableObject}
+   */
+  connectedMultiFillableObject = null;
+
+  /**
+   * Places the pipet into multiFillableObject.
+   * 
+   * Does nothing if there is already a connected MultiFillableObject.
+   * 
+   * @param {MultiFillableObject} multiFillableObject The object to put the pipet into.
+   */
+  connectMultiFillableObject(multiFillableObject) {
+    if (this.connectedMultiFillableObject == null)
+      this.connectedMultiFillableObject = multiFillableObject;
+  }
+
+  /**
+   * Removes the pipet from the connected MultiFillableObject.
+   */
+  removeMultiFillableObject() {
+    this.connectedMultiFillableObject = null;
+  }
+
+  /** 
+   * Returns whether or not the pipet is in a MultiFillableObject.
+   * 
+   * @returns {boolean} True if the pipet is currently in a MultiFillableObject
+   */
+  hasMultiFillableObject() {
+    return this.connectedMultiFillableObject != null;
+  }
+
+  /**
+   * Extracts amountToExtract from the connected MultiFillableObject into the pipet.
+   * 
+   * Does nothing if there is no MultiFillableObject connected.
+   * 
+   * @param {number} amountToExtract The amount to transfer from connectedMultiFillableObject to the pipet
+   */
+  extractLiquid(amountToExtract) {
+    if (this.connectedMultiFillableObject != null) {
+      this.connectedMultiFillableObject.transferLiquid(this, amountToExtract);
+    }
+  }
+
+  /**
+   * Releases amountToRelease from the pipet.
+   * 
+   * If there is a connectedMultiFillableObject, the removed liquid is added to it.
+   * 
+   * @param {number} amountToRelease The amount to remove from the pipet and add to connectedMultiFillableObject
+   */
+  releaseLiquid(amountToRelease) {
+    if (this.connectedMultiFillableObject != null) {
+      this.transferLiquid(this.connectedMultiFillableObject, amountToRelease);
+    }
+    else {
+      this.removeLiquid(amountToRelease);
+    }
+  }
+}
+
+export default SerologicalPipet;</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
+</body>
+</html>
