@@ -2,6 +2,10 @@ export default class FillableObject {
   currentLevel = 0;
   capacity;
 
+  constructor(capacity) {
+    this.capacity = capacity;
+  }
+
   isFull() {
     return this.currentLevel == this.capacity;
   }
