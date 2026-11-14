@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> titration/TitrationReport.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Chemistry for All</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-project-setup.html">
+                                Project Setup
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/Chemistry-for-All-Group/chemistry-for-all"
+                        >
+                            GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://chemistry-for-all-group.github.io/chemistry-for-all/"
+                        >
+                            Website
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="MolarMassExperiment.html">MolarMassExperiment</a></li><li><a href="PageBuilder.html">PageBuilder</a></li><li><a href="TitrationLab.html">TitrationLab</a></li><li><a href="TitrationReport.html">TitrationReport</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BEAKER_MARKS">BEAKER_MARKS</a></li><li><a href="global.html#BURET_INCREMENTS">BURET_INCREMENTS</a></li><li><a href="global.html#CONDITION_FIELDS">CONDITION_FIELDS</a></li><li><a href="global.html#DILUTION_CHOICES">DILUTION_CHOICES</a></li><li><a href="global.html#GAS_CONSTANT">GAS_CONSTANT</a></li><li><a href="global.html#MIN_LEVEL_FOR_READING">MIN_LEVEL_FOR_READING</a></li><li><a href="global.html#PIPET_VOLUME">PIPET_VOLUME</a></li><li><a href="global.html#RELEASE_INCREMENTS">RELEASE_INCREMENTS</a></li><li><a href="global.html#SAMPLES">SAMPLES</a></li><li><a href="global.html#SILVER_NITRATE_AMOUNTS">SILVER_NITRATE_AMOUNTS</a></li><li><a href="global.html#SODIUM_CHLORIDE_AMOUNT">SODIUM_CHLORIDE_AMOUNT</a></li><li><a href="global.html#TITRATIONS">TITRATIONS</a></li><li><a href="global.html#TRIALS">TRIALS</a></li><li><a href="global.html#announce">announce</a></li><li><a href="global.html#fillTemplate">fillTemplate</a></li><li><a href="global.html#getDisplacedLevel">getDisplacedLevel</a></li><li><a href="global.html#invertInWaterTrough">invertInWaterTrough</a></li><li><a href="global.html#listNames">listNames</a></li><li><a href="global.html#releaseButane">releaseButane</a></li><li><a href="global.html#removeFromWaterTrough">removeFromWaterTrough</a></li><li><a href="global.html#sampleFields">sampleFields</a></li><li><a href="global.html#setIsLeveledWithTroughWater">setIsLeveledWithTroughWater</a></li><li><a href="global.html#showFieldError">showFieldError</a></li><li><a href="global.html#submergeInWaterTrough">submergeInWaterTrough</a></li><li><a href="global.html#transferButane">transferButane</a></li></ul></div><div class="category"><h2>Titration</h2><h3>Classes / Liquids</h3><ul><li><a href="AprilSample.html">AprilSample</a></li><li><a href="Liquid.html">Liquid</a></li><li><a href="MarchSample.html">MarchSample</a></li><li><a href="SilverNitrate.html">SilverNitrate</a></li><li><a href="SodiumChloride.html">SodiumChloride</a></li><li><a href="Water.html">Water</a></li></ul><h3>Classes</h3><ul><li><a href="Beaker.html">Beaker</a></li><li><a href="Buret.html">Buret</a></li><li><a href="ButterflyClamp.html">ButterflyClamp</a></li><li><a href="Cylinder.html">Cylinder</a></li><li><a href="Electrode.html">Electrode</a></li><li><a href="MultiFillableObject.html">MultiFillableObject</a></li><li><a href="RingStand.html">RingStand</a></li><li><a href="SerologicalPipet.html">SerologicalPipet</a></li><li><a href="TitrationExperiment.html">TitrationExperiment</a></li><li><a href="VolumetricFlask.html">VolumetricFlask</a></li></ul><h3>Global</h3><ul><li><a href="global.html#SOLUBILITY_CONSTANTS">SOLUBILITY_CONSTANTS</a></li><li><a href="global.html#titrationExperiment">titrationExperiment</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>titration/TitrationReport.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * The samples titrated: the sodium chloride standard in the practice
+ * titration (part A), then the March and April bay water samples (part B).
+ */
+export const SAMPLES = [
+  { key: 'practice', name: 'Sodium chloride standard', bayWater: false },
+  { key: 'march', name: 'March bay water', bayWater: true },
+  { key: 'april', name: 'April bay water', bayWater: true },
+];
+
+/**
+ * Every titration the student records readings for. Each bay water sample
+ * gets a quick "fast titration" to find roughly where the equivalence point
+ * is, then two careful trials that are averaged. `phrase` is how the
+ * titration is named in the middle of a sentence.
+ */
+export const TITRATIONS = [
+  { key: 'practice', sample: 'practice', name: 'Practice titration', phrase: 'the practice titration' },
+  { key: 'marchFast', sample: 'march', name: 'March fast titration', phrase: 'the March fast titration' },
+  { key: 'marchTrial1', sample: 'march', name: 'March trial 1', phrase: 'March trial 1' },
+  { key: 'marchTrial2', sample: 'march', name: 'March trial 2', phrase: 'March trial 2' },
+  { key: 'aprilFast', sample: 'april', name: 'April fast titration', phrase: 'the April fast titration' },
+  { key: 'aprilTrial1', sample: 'april', name: 'April trial 1', phrase: 'April trial 1' },
+  { key: 'aprilTrial2', sample: 'april', name: 'April trial 2', phrase: 'April trial 2' },
+];
+
+/** Choices for whether a bay water sample was diluted. '' means not answered. */
+export const DILUTION_CHOICES = [
+  { value: '', text: 'Not answered' },
+  { value: 'no', text: 'No' },
+  { value: 'yes', text: 'Yes, 1 milliliter diluted to 10 milliliters' },
+];
+
+/**
+ * Every number the student can record. `kind` matches the instrument the
+ * value is read from, so a pipet reading can only be recorded as a sample
+ * volume. Calculation fields have the kind 'calculation': the student works
+ * these out and types them in.
+ */
+function sampleFields(sample) {
+  const fields = [
+    { key: 'sampleVolume', kind: 'sampleVolume', label: 'Volume of sample pipetted into each beaker', unit: 'milliliters', min: 0 },
+  ];
+  if (!sample.bayWater)
+    fields.push({ key: 'expectedVolume', kind: 'calculation', label: 'Calculated volume of silver nitrate needed', unit: 'milliliters', min: null });
+  return fields;
+}
+
+const TITRATION_FIELDS = [
+  { key: 'equivalenceVolume', kind: 'calculation', label: 'Volume of silver nitrate added at the equivalence point', unit: 'milliliters', min: null },
+];
+
+const CALCULATION_FIELDS = [
+  { key: 'averageVolume', kind: 'calculation', label: 'Average volume of silver nitrate, trials 1 and 2', unit: 'milliliters', min: null },
+  { key: 'molesSilver', kind: 'calculation', label: 'Moles of silver nitrate', unit: 'moles', min: null },
+  { key: 'molesSodiumChloride', kind: 'calculation', label: 'Moles of sodium chloride', unit: 'moles', min: null },
+  { key: 'gramsSodiumChloride', kind: 'calculation', label: 'Grams of sodium chloride', unit: 'grams', min: null },
+  { key: 'salinity', kind: 'calculation', label: 'Salinity', unit: 'parts per thousand', min: null },
+];
+
+function withIds(fields, owner) {
+  return fields.map((field) => ({
+    ...field,
+    id: `${owner.key}-${field.key}`,
+    fullLabel: `${owner.name}, ${field.label.charAt(0).toLowerCase() + field.label.slice(1)}`,
+  }));
+}
+
+/**
+ * Everything the student has written down for the titration: number fields
+ * (same as MolarMassReport), whether each bay water sample was diluted, and
+ * for each titration a list of readings. Each reading is a buret reading and
+ * a voltage, kept as the text that was shown.
+ */
+export class TitrationReport {
+  values = {};
+  diluted = {};
+  readings = {};
+
+  constructor() {
+    this.clear();
+  }
+
+  clear() {
+    this.values = Object.fromEntries(this.fields().map((field) => [field.id, '']));
+    this.diluted = Object.fromEntries(SAMPLES.filter((sample) => sample.bayWater).map((sample) => [sample.key, '']));
+    this.readings = Object.fromEntries(TITRATIONS.map((titration) => [titration.key, []]));
+  }
+
+  fields() {
+    return [
+      ...SAMPLES.flatMap((sample) => this.sampleFields(sample.key)),
+      ...TITRATIONS.flatMap((titration) => this.titrationFields(titration.key)),
+      ...SAMPLES.flatMap((sample) => this.calculationFields(sample.key)),
+    ];
+  }
+
+  sampleFields(sampleKey) {
+    const sample = SAMPLES.find((item) => item.key === sampleKey);
+    return withIds(sampleFields(sample), sample);
+  }
+
+  titrationFields(titrationKey) {
+    return withIds(TITRATION_FIELDS, TITRATIONS.find((item) => item.key === titrationKey));
+  }
+
+  /** Salinity calculations; only for the bay water samples. */
+  calculationFields(sampleKey) {
+    const sample = SAMPLES.find((item) => item.key === sampleKey);
+    return sample.bayWater ? withIds(CALCULATION_FIELDS, sample) : [];
+  }
+
+  field(id) {
+    return this.fields().find((field) => field.id === id);
+  }
+
+  fieldsOfKind(kind) {
+    return this.fields().filter((field) => field.kind === kind);
+  }
+
+  get(id) {
+    return this.values[id] ?? '';
+  }
+
+  set(id, text) {
+    this.values[id] = String(text);
+  }
+
+  setDiluted(sampleKey, value) {
+    if (sampleKey in this.diluted &amp;&amp; DILUTION_CHOICES.some((choice) => choice.value === value))
+      this.diluted[sampleKey] = value;
+  }
+
+  /** Adds a reading to a titration's list and returns its number (starting at 1). */
+  addReading(titrationKey, buret, voltage) {
+    this.readings[titrationKey].push({ buret: String(buret), voltage: String(voltage) });
+    return this.readings[titrationKey].length;
+  }
+
+  /** Removes the most recent reading from a titration; returns it, or undefined if there were none. */
+  removeLastReading(titrationKey) {
+    return this.readings[titrationKey].pop();
+  }
+
+  /** Removes every reading from a titration, e.g. to start it again after diluting. */
+  clearReadings(titrationKey) {
+    this.readings[titrationKey] = [];
+  }
+
+  /**
+   * Returns an error message for a field, or '' if it is empty or valid.
+   */
+  error(id) {
+    const text = this.get(id).trim();
+    if (text === '')
+      return '';
+    const field = this.field(id);
+    const number = Number(text);
+    if (!Number.isFinite(number))
+      return `${field.fullLabel} must be a number, for example 12.5.`;
+    if (field.min !== null &amp;&amp; number &lt;= field.min)
+      return `${field.fullLabel} must be greater than ${field.min}.`;
+    return '';
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
+</body>
+</html>

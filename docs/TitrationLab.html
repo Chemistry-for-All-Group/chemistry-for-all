@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> TitrationLab</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Chemistry for All</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-project-setup.html">
+                                Project Setup
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/Chemistry-for-All-Group/chemistry-for-all"
+                        >
+                            GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://chemistry-for-all-group.github.io/chemistry-for-all/"
+                        >
+                            Website
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="MolarMassExperiment.html">MolarMassExperiment</a></li><li><a href="PageBuilder.html">PageBuilder</a></li><li><a href="TitrationLab.html">TitrationLab</a></li><li><a href="TitrationReport.html">TitrationReport</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BEAKER_MARKS">BEAKER_MARKS</a></li><li><a href="global.html#BURET_INCREMENTS">BURET_INCREMENTS</a></li><li><a href="global.html#CONDITION_FIELDS">CONDITION_FIELDS</a></li><li><a href="global.html#DILUTION_CHOICES">DILUTION_CHOICES</a></li><li><a href="global.html#GAS_CONSTANT">GAS_CONSTANT</a></li><li><a href="global.html#MIN_LEVEL_FOR_READING">MIN_LEVEL_FOR_READING</a></li><li><a href="global.html#PIPET_VOLUME">PIPET_VOLUME</a></li><li><a href="global.html#RELEASE_INCREMENTS">RELEASE_INCREMENTS</a></li><li><a href="global.html#SAMPLES">SAMPLES</a></li><li><a href="global.html#SILVER_NITRATE_AMOUNTS">SILVER_NITRATE_AMOUNTS</a></li><li><a href="global.html#SODIUM_CHLORIDE_AMOUNT">SODIUM_CHLORIDE_AMOUNT</a></li><li><a href="global.html#TITRATIONS">TITRATIONS</a></li><li><a href="global.html#TRIALS">TRIALS</a></li><li><a href="global.html#announce">announce</a></li><li><a href="global.html#fillTemplate">fillTemplate</a></li><li><a href="global.html#getDisplacedLevel">getDisplacedLevel</a></li><li><a href="global.html#invertInWaterTrough">invertInWaterTrough</a></li><li><a href="global.html#listNames">listNames</a></li><li><a href="global.html#releaseButane">releaseButane</a></li><li><a href="global.html#removeFromWaterTrough">removeFromWaterTrough</a></li><li><a href="global.html#sampleFields">sampleFields</a></li><li><a href="global.html#setIsLeveledWithTroughWater">setIsLeveledWithTroughWater</a></li><li><a href="global.html#showFieldError">showFieldError</a></li><li><a href="global.html#submergeInWaterTrough">submergeInWaterTrough</a></li><li><a href="global.html#transferButane">transferButane</a></li></ul></div><div class="category"><h2>Titration</h2><h3>Classes / Liquids</h3><ul><li><a href="AprilSample.html">AprilSample</a></li><li><a href="Liquid.html">Liquid</a></li><li><a href="MarchSample.html">MarchSample</a></li><li><a href="SilverNitrate.html">SilverNitrate</a></li><li><a href="SodiumChloride.html">SodiumChloride</a></li><li><a href="Water.html">Water</a></li></ul><h3>Classes</h3><ul><li><a href="Beaker.html">Beaker</a></li><li><a href="Buret.html">Buret</a></li><li><a href="ButterflyClamp.html">ButterflyClamp</a></li><li><a href="Cylinder.html">Cylinder</a></li><li><a href="Electrode.html">Electrode</a></li><li><a href="MultiFillableObject.html">MultiFillableObject</a></li><li><a href="RingStand.html">RingStand</a></li><li><a href="SerologicalPipet.html">SerologicalPipet</a></li><li><a href="TitrationExperiment.html">TitrationExperiment</a></li><li><a href="VolumetricFlask.html">VolumetricFlask</a></li></ul><h3>Global</h3><ul><li><a href="global.html#SOLUBILITY_CONSTANTS">SOLUBILITY_CONSTANTS</a></li><li><a href="global.html#titrationExperiment">titrationExperiment</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>TitrationLab</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>TitrationLab<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">The titration experiment: finding the salinity of bay water samples by
+titrating their chloride with silver nitrate, measuring the voltage
+between two electrodes instead of watching for a colour change.
+
+Keeps track of where each piece of equipment is and uses the backend
+classes to do each action. Action methods return a sentence describing
+what happened, which gets shown and read out to the student.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="TitrationLab">
+        <a class="href-link" href="#TitrationLab">#</a>
+        
+        <span class="code-name">
+            
+                new TitrationLab<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line72">line 72</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="addTitrant">
+        <a class="href-link" href="#addTitrant">#</a>
+        
+        <span class="code-name">
+            
+                addTitrant<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Opens the stopcock once, releasing about buretIncrement mL of silver nitrate.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line260">line 260</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="beakerUnderBuret">
+        <a class="href-link" href="#beakerUnderBuret">#</a>
+        
+        <span class="code-name">
+            
+                beakerUnderBuret<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Id of the beaker under the buret, or null.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line138">line 138</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="changed">
+        <a class="href-link" href="#changed">#</a>
+        
+        <span class="code-name">
+            
+                changed<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Something changed, so an earlier titration reading no longer matches.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line156">line 156</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="containerOptions">
+        <a class="href-link" href="#containerOptions">#</a>
+        
+        <span class="code-name">
+            
+                containerOptions<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Dropdown options for a set of containers by id.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line535">line 535</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="contents">
+        <a class="href-link" href="#contents">#</a>
+        
+        <span class="code-name">
+            
+                contents<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Describes what is in a container, e.g. "about 20 milliliters of March
+bay water and distilled water". With precision, the amount is exact to
+that many decimal places instead ("1.00 milliliters of ...").
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line170">line 170</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="electrodeBeaker">
+        <a class="href-link" href="#electrodeBeaker">#</a>
+        
+        <span class="code-name">
+            
+                electrodeBeaker<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Id of the beaker the electrodes are in, or null.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line143">line 143</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="emptyAndRinse">
+        <a class="href-link" href="#emptyAndRinse">#</a>
+        
+        <span class="code-name">
+            
+                emptyAndRinse<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Empties a container into the waste beaker and rinses it with distilled water.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line405">line 405</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="fillPipet">
+        <a class="href-link" href="#fillPipet">#</a>
+        
+        <span class="code-name">
+            
+                fillPipet<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Draws up to amount mL from a pipet source; returns a message if it cannot.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line346">line 346</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="hasReading">
+        <a class="href-link" href="#hasReading">#</a>
+        
+        <span class="code-name">
+            
+                hasReading<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Whether an instrument has been read and the reading not yet recorded.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line493">line 493</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="holds">
+        <a class="href-link" href="#holds">#</a>
+        
+        <span class="code-name">
+            
+                holds<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        A sentence saying what a container holds, e.g. "The flask holds ..."
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line182">line 182</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="pipetSourceOptions">
+        <a class="href-link" href="#pipetSourceOptions">#</a>
+        
+        <span class="code-name">
+            
+                pipetSourceOptions<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Dropdown options for where the pipet draws from.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line540">line 540</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="recordAction">
+        <a class="href-link" href="#recordAction">#</a>
+        
+        <span class="code-name">
+            
+                recordAction<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        An action with a "Record as" dropdown that picks which report field the
+reading goes into.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line516">line 516</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="recordReading">
+        <a class="href-link" href="#recordReading">#</a>
+        
+        <span class="code-name">
+            
+                recordReading<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Copies the last reading taken into a report field.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line498">line 498</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="recordTarget">
+        <a class="href-link" href="#recordTarget">#</a>
+        
+        <span class="code-name">
+            
+                recordTarget<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        The report field a reading of this kind will be recorded in.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line480">line 480</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="reportFieldData">
+        <a class="href-link" href="#reportFieldData">#</a>
+        
+        <span class="code-name">
+            
+                reportFieldData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Data for one input in the report form (see the number-field template).
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line772">line 772</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="stations">
+        <a class="href-link" href="#stations">#</a>
+        
+        <span class="code-name">
+            
+                stations<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        The list of stations shown on the lab bench. Each station has:
+ - id, title, description
+ - state(): sentences describing the station right now
+ - actions(): the buttons to show right now; each has a label and a run()
+   function that returns the message to announce
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line551">line 551</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="toWaste">
+        <a class="href-link" href="#toWaste">#</a>
+        
+        <span class="code-name">
+            
+                toWaste<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Pours everything in a container into the waste beaker.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line161">line 161</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="voltage">
+        <a class="href-link" href="#voltage">#</a>
+        
+        <span class="code-name">
+            
+                voltage<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        The voltage between the electrodes in millivolts, or a sentence saying
+why there is no reading.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="titration_TitrationLab.js.html" class="button">View Source</a>
+            <span>
+                <a href="titration_TitrationLab.js.html">titration/TitrationLab.js</a>, <a href="titration_TitrationLab.js.html#line285">line 285</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> molar_mass/MolarMassReport.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Chemistry for All</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-project-setup.html">
+                                Project Setup
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/Chemistry-for-All-Group/chemistry-for-all"
+                        >
+                            GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://chemistry-for-all-group.github.io/chemistry-for-all/"
+                        >
+                            Website
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="MolarMassExperiment.html">MolarMassExperiment</a></li><li><a href="PageBuilder.html">PageBuilder</a></li><li><a href="TitrationLab.html">TitrationLab</a></li><li><a href="TitrationReport.html">TitrationReport</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BEAKER_MARKS">BEAKER_MARKS</a></li><li><a href="global.html#BURET_INCREMENTS">BURET_INCREMENTS</a></li><li><a href="global.html#CONDITION_FIELDS">CONDITION_FIELDS</a></li><li><a href="global.html#DILUTION_CHOICES">DILUTION_CHOICES</a></li><li><a href="global.html#GAS_CONSTANT">GAS_CONSTANT</a></li><li><a href="global.html#MIN_LEVEL_FOR_READING">MIN_LEVEL_FOR_READING</a></li><li><a href="global.html#PIPET_VOLUME">PIPET_VOLUME</a></li><li><a href="global.html#RELEASE_INCREMENTS">RELEASE_INCREMENTS</a></li><li><a href="global.html#SAMPLES">SAMPLES</a></li><li><a href="global.html#SILVER_NITRATE_AMOUNTS">SILVER_NITRATE_AMOUNTS</a></li><li><a href="global.html#SODIUM_CHLORIDE_AMOUNT">SODIUM_CHLORIDE_AMOUNT</a></li><li><a href="global.html#TITRATIONS">TITRATIONS</a></li><li><a href="global.html#TRIALS">TRIALS</a></li><li><a href="global.html#announce">announce</a></li><li><a href="global.html#fillTemplate">fillTemplate</a></li><li><a href="global.html#getDisplacedLevel">getDisplacedLevel</a></li><li><a href="global.html#invertInWaterTrough">invertInWaterTrough</a></li><li><a href="global.html#listNames">listNames</a></li><li><a href="global.html#releaseButane">releaseButane</a></li><li><a href="global.html#removeFromWaterTrough">removeFromWaterTrough</a></li><li><a href="global.html#sampleFields">sampleFields</a></li><li><a href="global.html#setIsLeveledWithTroughWater">setIsLeveledWithTroughWater</a></li><li><a href="global.html#showFieldError">showFieldError</a></li><li><a href="global.html#submergeInWaterTrough">submergeInWaterTrough</a></li><li><a href="global.html#transferButane">transferButane</a></li></ul></div><div class="category"><h2>Titration</h2><h3>Classes / Liquids</h3><ul><li><a href="AprilSample.html">AprilSample</a></li><li><a href="Liquid.html">Liquid</a></li><li><a href="MarchSample.html">MarchSample</a></li><li><a href="SilverNitrate.html">SilverNitrate</a></li><li><a href="SodiumChloride.html">SodiumChloride</a></li><li><a href="Water.html">Water</a></li></ul><h3>Classes</h3><ul><li><a href="Beaker.html">Beaker</a></li><li><a href="Buret.html">Buret</a></li><li><a href="ButterflyClamp.html">ButterflyClamp</a></li><li><a href="Cylinder.html">Cylinder</a></li><li><a href="Electrode.html">Electrode</a></li><li><a href="MultiFillableObject.html">MultiFillableObject</a></li><li><a href="RingStand.html">RingStand</a></li><li><a href="SerologicalPipet.html">SerologicalPipet</a></li><li><a href="TitrationExperiment.html">TitrationExperiment</a></li><li><a href="VolumetricFlask.html">VolumetricFlask</a></li></ul><h3>Global</h3><ul><li><a href="global.html#SOLUBILITY_CONSTANTS">SOLUBILITY_CONSTANTS</a></li><li><a href="global.html#titrationExperiment">titrationExperiment</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>molar_mass/MolarMassReport.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A practice run to refine technique, then three trials whose results are
+ * averaged (see the lab's procedure, parts B and C).
+ */
+export const TRIALS = [
+  { key: 'practice', name: 'Practice run', practice: true },
+  { key: 'trial1', name: 'Trial 1', practice: false },
+  { key: 'trial2', name: 'Trial 2', practice: false },
+  { key: 'trial3', name: 'Trial 3', practice: false },
+];
+
+/**
+ * Every value the student can record. `kind` matches the instrument the
+ * value is read from, so a scale reading can only be recorded as a mass.
+ * Calculation fields have the kind 'calculation': the student works these
+ * out and types them in
+ */
+const CONDITION_FIELDS = [
+  { id: 'temperature', kind: 'temperature', label: 'Temperature', unit: 'degrees Celsius', min: -273.15 },
+  { id: 'temperatureKelvin', kind: 'calculation', label: 'Temperature in kelvin', unit: 'kelvin', min: null },
+  { id: 'pressure', kind: 'pressure', label: 'Barometric pressure', unit: 'torr', min: 0 },
+  { id: 'waterVaporPressure', kind: 'calculation', label: 'Partial pressure of water', unit: 'torr', min: null },
+  { id: 'dryGasPressure', kind: 'calculation', label: 'Pressure of dry gas', unit: 'torr', min: null },
+];
+
+const MEASUREMENT_FIELDS = [
+  { key: 'initialMass', kind: 'mass', label: 'Initial mass of lighter', unit: 'grams', min: 0 },
+  { key: 'finalMass', kind: 'mass', label: 'Final mass of lighter', unit: 'grams', min: 0 },
+  { key: 'volume', kind: 'volume', label: 'Volume of gas collected', unit: 'milliliters', min: 0 },
+];
+
+const CALCULATION_FIELDS = [
+  { key: 'massButane', kind: 'calculation', label: 'Mass of butane', unit: 'grams', min: null },
+  { key: 'liters', kind: 'calculation', label: 'Volume of gas', unit: 'liters', min: null },
+  { key: 'moles', kind: 'calculation', label: 'Moles of butane', unit: 'moles', min: null },
+  { key: 'molarMass', kind: 'calculation', label: 'Molar mass', unit: 'grams per mole', min: null },
+  { key: 'percentError', kind: 'calculation', label: 'Percent difference from actual molar mass', unit: 'percent', min: null },
+  // Only for the averaged trials, not the practice run.
+  { key: 'deviation', kind: 'calculation', label: 'Deviation from average molar mass', unit: 'grams per mole', min: null, trialsOnly: true },
+];
+
+const FINAL_FIELDS = [
+  { id: 'averageMolarMass', kind: 'calculation', label: 'Average molar mass of trials 1 to 3', unit: 'grams per mole', min: null },
+  { id: 'averagePercentError', kind: 'calculation', label: 'Percent difference of the average from actual molar mass', unit: 'percent', min: null },
+  { id: 'standardDeviation', kind: 'calculation', label: 'Standard deviation of molar mass', unit: 'grams per mole', min: null },
+];
+
+function perTrial(fields, trial) {
+  return fields
+    .filter((field) => !(field.trialsOnly &amp;&amp; trial.practice))
+    .map((field) => ({
+      ...field,
+      id: `${trial.key}-${field.key}`,
+      trial: trial.key,
+      fullLabel: `${trial.name}, ${field.label.charAt(0).toLowerCase() + field.label.slice(1)}`,
+    }));
+}
+
+export class MolarMassReport {
+  values = {};
+
+  constructor() {
+    this.clear();
+  }
+
+  clear() {
+    this.values = Object.fromEntries(this.fields().map((field) => [field.id, '']));
+  }
+
+  fields() {
+    return [
+      ...this.conditionFields(),
+      ...TRIALS.flatMap((trial) => this.measurementFields(trial)),
+      ...TRIALS.flatMap((trial) => this.calculationFields(trial)),
+      ...this.finalFields(),
+    ];
+  }
+
+  conditionFields() {
+    return CONDITION_FIELDS.map((field) => ({ ...field, trial: null, fullLabel: field.label }));
+  }
+
+  measurementFields(trial) {
+    return perTrial(MEASUREMENT_FIELDS, trial);
+  }
+
+  calculationFields(trial) {
+    return perTrial(CALCULATION_FIELDS, trial);
+  }
+
+  finalFields() {
+    return FINAL_FIELDS.map((field) => ({ ...field, trial: null, fullLabel: field.label }));
+  }
+
+  field(id) {
+    return this.fields().find((field) => field.id === id);
+  }
+
+  fieldsOfKind(kind) {
+    return this.fields().filter((field) => field.kind === kind);
+  }
+
+  get(id) {
+    return this.values[id] ?? '';
+  }
+
+  set(id, text) {
+    this.values[id] = String(text);
+  }
+
+  /**
+   * Returns an error message for a field, or '' if it is empty or valid.
+   */
+  error(id) {
+    const text = this.get(id).trim();
+    if (text === '')
+      return '';
+    const field = this.field(id);
+    const number = Number(text);
+    if (!Number.isFinite(number))
+      return `${field.fullLabel} must be a number, for example 12.5.`;
+    if (field.min !== null &amp;&amp; number &lt;= field.min)
+      return `${field.fullLabel} must be greater than ${field.min}.`;
+    return '';
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
+</body>
+</html>
