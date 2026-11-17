@@ -2,6 +2,8 @@ import Cylinder from "./Cylinder.js";
 
 /**
  * Represents tubing that can connect a Cylinder and a Lighter.
+ * 
+ * @category Molar Mass
  */
 class Tubing {
   /**
