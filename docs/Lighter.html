@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Lighter</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Chemistry for All</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-project-setup.html">
+                                Project Setup
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/Chemistry-for-All-Group/chemistry-for-all"
+                        >
+                            GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://chemistry-for-all-group.github.io/chemistry-for-all/"
+                        >
+                            Website
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-MolarMass_Cylinder.html">MolarMass/Cylinder</a></li><li><a href="module-Titration_Cylinder.html">Titration/Cylinder</a></li></ul><h3>Classes</h3><ul><li><a href="MolarMassExperiment.html">MolarMassExperiment</a></li><li><a href="PageBuilder.html">PageBuilder</a></li><li><a href="TitrationLab.html">TitrationLab</a></li><li><a href="TitrationReport.html">TitrationReport</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BEAKER_MARKS">BEAKER_MARKS</a></li><li><a href="global.html#BURET_INCREMENTS">BURET_INCREMENTS</a></li><li><a href="global.html#CONDITION_FIELDS">CONDITION_FIELDS</a></li><li><a href="global.html#DILUTION_CHOICES">DILUTION_CHOICES</a></li><li><a href="global.html#MIN_LEVEL_FOR_READING">MIN_LEVEL_FOR_READING</a></li><li><a href="global.html#PIPET_VOLUME">PIPET_VOLUME</a></li><li><a href="global.html#RELEASE_INCREMENTS">RELEASE_INCREMENTS</a></li><li><a href="global.html#SAMPLES">SAMPLES</a></li><li><a href="global.html#SILVER_NITRATE_AMOUNTS">SILVER_NITRATE_AMOUNTS</a></li><li><a href="global.html#SODIUM_CHLORIDE_AMOUNT">SODIUM_CHLORIDE_AMOUNT</a></li><li><a href="global.html#TITRATIONS">TITRATIONS</a></li><li><a href="global.html#TRIALS">TRIALS</a></li><li><a href="global.html#announce">announce</a></li><li><a href="global.html#fillTemplate">fillTemplate</a></li><li><a href="global.html#listNames">listNames</a></li><li><a href="global.html#sampleFields">sampleFields</a></li><li><a href="global.html#showFieldError">showFieldError</a></li></ul></div><div class="category"><h2>Molar Mass</h2><h3>Classes</h3><ul><li><a href="FillableObject.html">FillableObject</a></li><li><a href="Lighter.html">Lighter</a></li><li><a href="PressureSensor.html">PressureSensor</a></li><li><a href="Scale.html">Scale</a></li><li><a href="Sink.html">Sink</a></li><li><a href="Thermometer.html">Thermometer</a></li><li><a href="Tubing.html">Tubing</a></li><li><a href="WaterTrough.html">WaterTrough</a></li><li><a href="WeightedObject.html">WeightedObject</a></li><li><a href="module-MolarMass_Cylinder-Cylinder.html">Cylinder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GAS_CONSTANT">GAS_CONSTANT</a></li><li><a href="global.html#MAX_PRESSURE">MAX_PRESSURE</a></li><li><a href="global.html#MAX_TEMPERATURE">MAX_TEMPERATURE</a></li><li><a href="global.html#MIN_PRESSURE">MIN_PRESSURE</a></li><li><a href="global.html#MIN_TEMPERATURE">MIN_TEMPERATURE</a></li><li><a href="global.html#MOLAR_MASS_BUTANE">MOLAR_MASS_BUTANE</a></li></ul></div><div class="category"><h2>Titration</h2><h3>Classes / Liquids</h3><ul><li><a href="AprilSample.html">AprilSample</a></li><li><a href="Liquid.html">Liquid</a></li><li><a href="MarchSample.html">MarchSample</a></li><li><a href="SilverNitrate.html">SilverNitrate</a></li><li><a href="SodiumChloride.html">SodiumChloride</a></li><li><a href="Water.html">Water</a></li></ul><h3>Classes</h3><ul><li><a href="Beaker.html">Beaker</a></li><li><a href="Buret.html">Buret</a></li><li><a href="ButterflyClamp.html">ButterflyClamp</a></li><li><a href="Electrode.html">Electrode</a></li><li><a href="MultiFillableObject.html">MultiFillableObject</a></li><li><a href="RingStand.html">RingStand</a></li><li><a href="SerologicalPipet.html">SerologicalPipet</a></li><li><a href="TitrationExperiment.html">TitrationExperiment</a></li><li><a href="VolumetricFlask.html">VolumetricFlask</a></li><li><a href="module-Titration_Cylinder-Cylinder.html">Cylinder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#SOLUBILITY_CONSTANTS">SOLUBILITY_CONSTANTS</a></li><li><a href="global.html#titrationExperiment">titrationExperiment</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>Lighter</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>Lighter<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Represents a butane lighter.
+
+Contains a certain amount of butane that can be released. The mass of the 
+lighter depends on the amount of butane.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="Lighter">
+        <a class="href-link" href="#Lighter">#</a>
+        
+        <span class="code-name">
+            
+                new Lighter<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line30">line 30</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="WeightedObject.html">WeightedObject</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type"><a href="Tubing.html">Tubing</a></code>
+
+
+    </span>
+
+<h4 class="name" id="connectedTubing">
+    <a class="href-link" href="#connectedTubing">#</a>
+    
+        
+            <span class='tag'>protected</span>
+        
+    
+    <span class="code-name">
+        connectedTubing
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Represents tubing that is connected to the lighter in such a way that butane
+would flow through the tubing. 
+
+If null, no tubing is connected.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line59">line 59</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="mass">
+    <a class="href-link" href="#mass">#</a>
+    
+        
+            <span class='tag'>protected</span>
+        
+    
+    <span class="code-name">
+        mass
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    The mass of the lighter when it contains no butane in grams.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="WeightedObject.html#mass">WeightedObject#mass</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line38">line 38</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="mlOfButane">
+    <a class="href-link" href="#mlOfButane">#</a>
+    
+        
+            <span class='tag'>protected</span>
+        
+    
+    <span class="code-name">
+        mlOfButane
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    The starting amount of butane in the lighter in mL.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line47">line 47</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="connectTubing">
+        <a class="href-link" href="#connectTubing">#</a>
+        
+        <span class="code-name">
+            
+                connectTubing<span class="signature">(tubing)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Connects the tubing to the lighter, so that when butane is released it will
+flow through the tubing.
+
+Does nothing if there is already a connected Tubing.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>tubing</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Tubing.html">Tubing</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The tubing to connect to the lighter</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line143">line 143</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getMass">
+        <a class="href-link" href="#getMass">#</a>
+        
+        <span class="code-name">
+            
+                getMass<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Returns the total mass of the lighter in grams.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="WeightedObject.html#getMass">WeightedObject#getMass</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line68">line 68</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>The total mass of the lighter in grams (i.e. the mass of the lighter's body and butane).</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getMassButane">
+        <a class="href-link" href="#getMassButane">#</a>
+        
+            
+                <span class='tag'>protected</span>
+            
+        
+        <span class="code-name">
+            
+                getMassButane<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Returns the mass of the butane inside of the lighter in grams.
+
+Uses the pressure from PressureSensor and temperature from Thermometer for
+the calculations.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line83">line 83</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>The mass of the butane inside the lighter in grams.</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="litersButane">
+        <a class="href-link" href="#litersButane">#</a>
+        
+            
+                <span class='tag'>protected</span>
+            
+        
+        <span class="code-name">
+            
+                litersButane<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Returns the amount of butane in the lighter in liters.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line96">line 96</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>The amount of butane in the lighter in liters.</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="releaseButane">
+        <a class="href-link" href="#releaseButane">#</a>
+        
+        <span class="code-name">
+            
+                releaseButane<span class="signature">(targetIncrement)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Reduces mlOfButane by a value within 0.1 mL of targetIncrement.
+
+The actual amount of butane removed is a randomly selected number between 
+targetIncrement - 0.1 mL and targetIncrement + 1 mL.
+
+If connectedTubing is not null (meaning there is tubing connected to the lighter),
+the butane will be transferred through the tubing. Otherwise, the butane will 
+simply be removed from the lighter like normal.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>targetIncrement</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          0.5
+      
+      </td>
+  
+
+  <td class="description last">The desired amount of butane in mL to be released from the lighter.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line114">line 114</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="removeTubing">
+        <a class="href-link" href="#removeTubing">#</a>
+        
+        <span class="code-name">
+            
+                removeTubing<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Removes the current Tubing from the lighter.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="molar_mass_Lighter.js.html" class="button">View Source</a>
+            <span>
+                <a href="molar_mass_Lighter.js.html">molar_mass/Lighter.js</a>, <a href="molar_mass_Lighter.js.html#line153">line 153</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
+</body>
+</html>
