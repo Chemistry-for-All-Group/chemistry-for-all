@@ -1,4 +1,8 @@
-export default class FillableObject {
+/**
+ * 
+ * @category Molar Mass
+ */
+class FillableObject {
   currentLevel = 0;
   capacity;
 
@@ -34,3 +38,5 @@ export default class FillableObject {
     return this.currentLevel;
   }
 }
+
+export default FillableObject;

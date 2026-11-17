@@ -1,4 +1,4 @@
-export default class WeightedObject {
+class WeightedObject {
   // Mass should be in grams
   mass = 0;
 
@@ -10,3 +10,5 @@ export default class WeightedObject {
     return this.mass;
   }
 }
+
+export default WeightedObject;

@@ -1,4 +1,4 @@
-export default class Sink {
+class Sink {
   objectsInSink = new Array();
   isOn = false;
 
@@ -26,3 +26,5 @@ export default class Sink {
     this.isOn = false;
   }
 }
+
+export default Sink;

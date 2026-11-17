@@ -8,7 +8,7 @@ const MOLAR_MASS_BUTANE = 58.1222;
  */
 const GAS_CONSTANT = 0.08206;
 
-export default class Lighter extends WeightedObject {
+class Lighter extends WeightedObject {
   mass = 14;
   mlOfButane = 300;
 
@@ -69,3 +69,5 @@ export default class Lighter extends WeightedObject {
     this.connectedTubing = null;
   }
 }
+
+export default Lighter;

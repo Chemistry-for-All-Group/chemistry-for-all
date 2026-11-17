@@ -1,4 +1,4 @@
-export default class Tubing {
+class Tubing {
   connectedCylinder = null;
 
   transferButane(amountToTransfer) {
@@ -16,3 +16,5 @@ export default class Tubing {
     this.connectedCylinder = null;
   }
 }
+
+export default Tubing;

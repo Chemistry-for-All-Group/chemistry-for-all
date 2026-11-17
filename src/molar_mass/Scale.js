@@ -1,4 +1,4 @@
-export default class Scale {
+class Scale {
   objectsOnScale = new Array();
   pageContent = '<h1>Scale</h1><input type="button" id="back" value="Back" onclick="replaceElement(\'body\', oldContent, \'cylinderButton\')" /><p id="weight-reading"></p>';
 
@@ -19,3 +19,5 @@ export default class Scale {
     return sum;
   }
 }
+
+export default Scale;
