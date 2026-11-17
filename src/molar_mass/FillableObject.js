@@ -90,6 +90,8 @@ class FillableObject {
    * @access public
    * 
    * @param {number} amountToRemove The amount of water to remove in mL.
+   * 
+   * @return {number} The actual amount removed from the object in mL.
    */
   removeLiquid(amountToRemove) {
     const originalAmount = this.currentLevel;
