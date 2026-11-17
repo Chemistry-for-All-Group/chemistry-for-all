@@ -2,6 +2,8 @@ import WeightedObject from "./WeightedObject.js";
 
 /**
  * Represents a scale used for getting the mass of WeightedObjects.
+ * 
+ * @category Molar Mass
  */
 class Scale {
   /**
