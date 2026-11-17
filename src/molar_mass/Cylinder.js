@@ -1,7 +1,15 @@
 import FillableObject from "./FillableObject.js";
 import WaterTrough from "./WaterTrough.js";
 
-export default class Cylinder extends FillableObject {
+/**
+ * A Fillable object that represents a graduated cylinder.
+ * 
+ * Can be filled with water and accept butane to displace the water.
+ * 
+ * @category Molar Mass
+ * @extends FillableObject
+ */
+class Cylinder extends FillableObject {
   capacity = 50;
 
   /**
@@ -141,3 +149,5 @@ export default class Cylinder extends FillableObject {
     }
   }
 }
+
+export default Cylinder;
