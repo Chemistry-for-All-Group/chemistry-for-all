@@ -31,7 +31,7 @@ class Scale {
   /**
    * Removes the specified object from the scale.
    * 
-   * If the object is not in the array, does nothing.
+   * If the object is not in the sink, does nothing.
    * 
    * @param {WeightedObject} object The object to remove from the scale.
    */
