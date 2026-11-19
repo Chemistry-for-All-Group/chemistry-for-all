@@ -9,6 +9,11 @@ import Cylinder from "./Cylinder.js";
 import { MolarMassReport, TRIALS } from "./MolarMassReport.js";
 import { announce, PageBuilder } from "../pageBuilder.js";
 
+/** 
+ * @module MolarMass/MolarMassExperiment
+ * @category Molar Mass
+ */
+
 /**
  * Wording for each location
  * 

@@ -7,6 +7,11 @@ import Electrode from "./Electrode.js";
 import SerologicalPipet from "./SerologicalPipet.js";
 import VolumetricFlask from "./VolumetricFlask.js";
 
+/** 
+ * @module Titration/TitrationExperiment
+ * @category Titration
+ */
+
 /**
  * Contains the equipment needed for the titration experiment.
  * 

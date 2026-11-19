@@ -1,14 +1,16 @@
+/** @module PageBuilder */
+
 /**
- * Makes a copy of a <template> from the HTML and fills it in with data.
- *
- * Attributes used in the templates:
+ * Makes a copy of a &lt;template&gt from the HTML and fills it in with data.
+ * <br>
+ * Attributes used in the templates:<br>
  *  - data-slot="name": the element's text becomes data[name]. If data[name]
  *    is a list, one copy of the data-item-template is added per item instead
  *    (used for lists of buttons, table rows, select options, ...). An item can
- *    use a different template by giving its own `template` id.
+ *    use a different template by giving its own `template` id.<br>
  *  - data-attr-<attribute>="name": sets <attribute> to data[name], e.g.
  *    data-attr-for="id" sets for="...". true adds an empty attribute (for
- *    attributes like selected), and false/null/undefined leaves it off.
+ *    attributes like selected), and false/null/undefined leaves it off.<br>
  *  - data-click / data-change / data-input="name": data[name] is run when
  *    that event happens on the element.
  */

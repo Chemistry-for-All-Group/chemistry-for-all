@@ -1,3 +1,8 @@
+/** 
+ * @module Titration/TitrationReport
+ * @category Titration
+ */
+
 /**
  * The samples titrated: the sodium chloride standard in the practice
  * titration (part A), then the March and April bay water samples (part B).

@@ -1,3 +1,8 @@
+/** 
+ * @module MolarMass/MolarMassReport
+ * @category Molar Mass
+ */
+
 /**
  * A practice run to refine technique, then three trials whose results are
  * averaged (see the lab's procedure, parts B and C).

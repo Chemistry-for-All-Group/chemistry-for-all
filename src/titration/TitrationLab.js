@@ -8,6 +8,11 @@ import Water from "./liquids/Water.js";
 import { TitrationReport, SAMPLES, TITRATIONS, DILUTION_CHOICES } from "./TitrationReport.js";
 import { announce, PageBuilder } from "../pageBuilder.js";
 
+/** 
+ * @module Titration/TitrationLab 
+ * @category Titration
+ */
+
 /**
  * Choices for how much silver nitrate one turn of the buret's stopcock
  * releases, in mL. A drop is about 0.05 mL. Each turn still varies slightly
