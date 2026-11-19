@@ -1,7 +1,10 @@
 import FillableObject from "./FillableObject.js";
 import WaterTrough from "./WaterTrough.js";
 
-/** @module MolarMass/Cylinder */
+/** 
+ * @module MolarMass/Cylinder 
+ * @category Molar Mass
+ */
 
 /**
  * A Fillable object that represents a graduated cylinder.

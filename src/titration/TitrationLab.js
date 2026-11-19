@@ -12,23 +12,45 @@ import { announce, PageBuilder } from "../pageBuilder.js";
  * Choices for how much silver nitrate one turn of the buret's stopcock
  * releases, in mL. A drop is about 0.05 mL. Each turn still varies slightly
  * around the chosen amount (see Buret.releaseLiquid).
+ * 
+ * @category Titration
  */
 export const BURET_INCREMENTS = [0.05, 0.1, 0.2, 0.5, 1, 2];
 
-/** Amounts of silver nitrate to measure out in the 25 mL cylinder, in mL. */
+/** 
+ * Amounts of silver nitrate to measure out in the 25 mL cylinder, in mL.
+ * 
+ * @category Titration
+ */
 export const SILVER_NITRATE_AMOUNTS = [15, 10];
 
-/** Amount of sodium chloride standard to measure out in the 10 mL cylinder, in mL. */
+/** 
+ * Amount of sodium chloride standard to measure out in the 10 mL cylinder, in mL.
+ * 
+ * @category Titration
+ */
 export const SODIUM_CHLORIDE_AMOUNT = 5;
 
-/** Amount the serological pipet draws up, and roughly the amount used to rinse it, in mL. */
+/** 
+ * Amount the serological pipet draws up, and roughly the amount used to rinse it, in mL.
+ * 
+ * @category Titration
+ */
 export const PIPET_VOLUME = 1;
 export const RINSE_VOLUME = 1;
 
-/** Marks a beaker can be filled to with distilled water, in mL. */
+/** 
+ * Marks a beaker can be filled to with distilled water, in mL. 
+ *
+ * @category Titration 
+ */
 export const BEAKER_MARKS = [10, 20];
 
-/** Below this many mL in a beaker, the electrodes are not covered and give no reading. */
+/** 
+ * Below this many mL in a beaker, the electrodes are not covered and give no reading. 
+ * 
+ * @category Titration
+ */
 export const MIN_LEVEL_FOR_READING = 8;
 
 // Distilled water used to rinse a beaker, flask or the electrodes into the waste beaker, in mL.
@@ -51,7 +73,11 @@ function milliliters(amount) {
   return `${amount} ${amount === 1 ? 'milliliter' : 'milliliters'}`;
 }
 
-/** Lists names as "a", "a and b", or "a, b and c". */
+/** 
+ * Lists names as "a", "a and b", or "a, b and c". 
+ * 
+ * @category Titration
+ */
 function listNames(names) {
   return names.length < 2 ? names.join('') : `${names.slice(0, -1).join(', ')} and ${names.at(-1)}`;
 }
@@ -68,6 +94,8 @@ function capitalize(text) {
  * Keeps track of where each piece of equipment is and uses the backend
  * classes to do each action. Action methods return a sentence describing
  * what happened, which gets shown and read out to the student.
+ * 
+ * @category Titration
  */
 export class TitrationLab {
   equipment = new TitrationExperiment();
@@ -901,7 +929,11 @@ export class TitrationLab {
   }
 }
 
-/** Shows or hides the error message under a report input. */
+/** 
+ * Shows or hides the error message under a report input. 
+ * 
+ * @category Titration
+ */
 function showFieldError(input, message) {
   const error = document.getElementById(`${input.id}-error`);
   error.textContent = message;
