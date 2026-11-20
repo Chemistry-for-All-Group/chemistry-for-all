@@ -9,13 +9,24 @@ import Cylinder from "./Cylinder.js";
 import { MolarMassReport, TRIALS } from "./MolarMassReport.js";
 import { announce, PageBuilder } from "../pageBuilder.js";
 
-// Wording for each location
+/** 
+ * @module MolarMass/MolarMassExperiment
+ * @category Molar Mass
+ */
+
+/**
+ * Wording for each location
+ * 
+ * @category Molar Mass
+ */
 const PLACE = { bench: 'on the lab bench', sink: 'in the sink', trough: 'in the water trough', scale: 'on the scale' };
 
 /**
  * Choices for how much butane one press of the lighter valve releases, in mL.
  * Each press still varies slightly around the chosen amount (see
  * Lighter.releaseButane).
+ * 
+ * @category Molar Mass
  */
 export const RELEASE_INCREMENTS = [0.5, 1, 2, 5];
 
@@ -29,6 +40,8 @@ function milliliters(amount) {
  * Keeps track of where each piece of equipment is and uses the backend
  * classes to do each action. Action methods return a sentence describing
  * what happened, which gets shown and read out to the student.
+ * 
+ * @category Molar Mass
  */
 export class MolarMassExperiment {
   scale = new Scale();
@@ -510,4 +523,10 @@ function showFieldError(input, message) {
   }
 }
 
+/**
+ * Instance of MolarMassExperiment.
+ * 
+ * @category Molar Mass
+ * @type {MolarMassExperiment}
+ */
 export var molarMassExperiment = new MolarMassExperiment();

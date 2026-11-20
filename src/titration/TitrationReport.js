@@ -1,6 +1,13 @@
+/** 
+ * @module Titration/TitrationReport
+ * @category Titration
+ */
+
 /**
  * The samples titrated: the sodium chloride standard in the practice
  * titration (part A), then the March and April bay water samples (part B).
+ * 
+ * @category Titration
  */
 export const SAMPLES = [
   { key: 'practice', name: 'Sodium chloride standard', bayWater: false },
@@ -13,6 +20,8 @@ export const SAMPLES = [
  * gets a quick "fast titration" to find roughly where the equivalence point
  * is, then two careful trials that are averaged. `phrase` is how the
  * titration is named in the middle of a sentence.
+ * 
+ * @category Titration
  */
 export const TITRATIONS = [
   { key: 'practice', sample: 'practice', name: 'Practice titration', phrase: 'the practice titration' },
@@ -24,7 +33,11 @@ export const TITRATIONS = [
   { key: 'aprilTrial2', sample: 'april', name: 'April trial 2', phrase: 'April trial 2' },
 ];
 
-/** Choices for whether a bay water sample was diluted. '' means not answered. */
+/** 
+ * Choices for whether a bay water sample was diluted. '' means not answered.
+ * 
+ * @category Titration
+ */
 export const DILUTION_CHOICES = [
   { value: '', text: 'Not answered' },
   { value: 'no', text: 'No' },
@@ -36,6 +49,8 @@ export const DILUTION_CHOICES = [
  * value is read from, so a pipet reading can only be recorded as a sample
  * volume. Calculation fields have the kind 'calculation': the student works
  * these out and types them in.
+ * 
+ * @category Titration
  */
 function sampleFields(sample) {
   const fields = [
@@ -71,6 +86,8 @@ function withIds(fields, owner) {
  * (same as MolarMassReport), whether each bay water sample was diluted, and
  * for each titration a list of readings. Each reading is a buret reading and
  * a voltage, kept as the text that was shown.
+ * 
+ * @category Titration
  */
 export class TitrationReport {
   values = {};

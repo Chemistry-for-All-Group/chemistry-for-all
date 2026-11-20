@@ -1,7 +1,20 @@
 import FillableObject from "./FillableObject.js";
 import WaterTrough from "./WaterTrough.js";
 
-export default class Cylinder extends FillableObject {
+/** 
+ * @module MolarMass/Cylinder 
+ * @category Molar Mass
+ */
+
+/**
+ * A Fillable object that represents a graduated cylinder.
+ * 
+ * Can be filled with water and accept butane to displace the water.
+ * 
+ * @category Molar Mass
+ * @extends FillableObject
+ */
+class Cylinder extends FillableObject {
   capacity = 50;
 
   /**
@@ -47,8 +60,11 @@ export default class Cylinder extends FillableObject {
   isLeveledWithTroughWater = false;
 
   /**
+   * Submerges the cylinder into the specified WaterTrough.
    * 
-   * @param {WaterTrough} waterTrough 
+   * @access public
+   * 
+   * @param {WaterTrough} waterTrough The WaterTrough to submerge the Cylinder in.
    */
   submergeInWaterTrough(waterTrough) {
     this.waterTrough = waterTrough;
@@ -61,6 +77,8 @@ export default class Cylinder extends FillableObject {
    * 
    * If the cylinder is currently inverted, any liquid in the cylinder gets
    * transferred to the WaterTrough.
+   * 
+   * @access public
    */
   removeFromWaterTrough() {
     if (this.waterTrough != null && this.isInvertedInTrough) {
@@ -77,6 +95,8 @@ export default class Cylinder extends FillableObject {
    * Must first be submerged in a water trough. If it is not inverted already,
    * it will transfer water from the water trough into the cylinder equal to the
    * cylinder's capacity. 
+   * 
+   * @access public
    */
   invertInWaterTrough() {
     if (this.waterTrough != null && !this.isInvertedInTrough) {
@@ -91,6 +111,8 @@ export default class Cylinder extends FillableObject {
    * If the cylinder is leveled with the trough's water, getDisplacedLevel will return
    * a more accurate reading. The cylinder must first be inverted in a WaterTrough
    * before setting it to be leveled.
+   * 
+   * @access public
    * 
    * @param {boolean} state True if cylinder should be leveled with water, false if it should be in position for transferring butane.
    */
@@ -114,6 +136,8 @@ export default class Cylinder extends FillableObject {
    * This function is intended to be called by the connected tubing and 
    * not directly called by the lighter or view.
    * 
+   * @access public
+   * 
    * @param {number} amountToTransfer The amount of water to displace due to the addition of butane.
    */
   transferButane(amountToTransfer) {
@@ -129,8 +153,10 @@ export default class Cylinder extends FillableObject {
    *
    * If the cylinder is not leveled with the water trough, the value returned
    * is increased by AMOUNT_TO_ADD_WHEN_NOT_LEVELED.
+   * 
+   * @access public
    *  
-   * @returns The current amount of water that has been displaced by butane.
+   * @returns {number} The current amount of water that has been displaced by butane.
    */
   getDisplacedLevel() {
     if (this.isLeveledWithTroughWater) {
@@ -141,3 +167,5 @@ export default class Cylinder extends FillableObject {
     }
   }
 }
+
+export default Cylinder;

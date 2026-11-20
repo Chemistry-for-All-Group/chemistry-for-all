@@ -1,6 +1,13 @@
+/** 
+ * @module MolarMass/MolarMassReport
+ * @category Molar Mass
+ */
+
 /**
  * A practice run to refine technique, then three trials whose results are
  * averaged (see the lab's procedure, parts B and C).
+ * 
+ * @category Molar Mass
  */
 export const TRIALS = [
   { key: 'practice', name: 'Practice run', practice: true },
@@ -14,6 +21,8 @@ export const TRIALS = [
  * value is read from, so a scale reading can only be recorded as a mass.
  * Calculation fields have the kind 'calculation': the student works these
  * out and types them in
+ * 
+ * @category Molar Mass
  */
 const CONDITION_FIELDS = [
   { id: 'temperature', kind: 'temperature', label: 'Temperature', unit: 'degrees Celsius', min: -273.15 },
@@ -56,6 +65,9 @@ function perTrial(fields, trial) {
     }));
 }
 
+/**
+ * @category Molar Mass
+ */
 export class MolarMassReport {
   values = {};
 

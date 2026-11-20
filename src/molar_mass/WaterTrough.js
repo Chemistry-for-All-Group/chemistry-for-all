@@ -1,6 +1,15 @@
 import FillableObject from "./FillableObject.js";
 
-export default class WaterTrough extends FillableObject {
-  // Capacity should not matter for molar mass experiment, so 100 is arbitrary
+/**
+ * Represents a plastic container that can be filled with water.
+ * 
+ * @category Molar Mass
+ * @extends FillableObject
+ */
+class WaterTrough extends FillableObject {
+  // Capacity is arbitrary, since for the molar mass experiment 
+  // it only needs to be able to be able to fill the cylinder.
   capacity = 2000;
 }
+
+export default WaterTrough;

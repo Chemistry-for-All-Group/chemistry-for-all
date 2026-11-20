@@ -1,5 +1,10 @@
 import MultiFillableObject from "./MultiFillableObject.js";
 
+/** 
+ * @module Titration/Cylinder
+ * @category Titration
+ */
+
 /**
  * A MultiFillableObject that represents a graduated cylinder.
  * 
