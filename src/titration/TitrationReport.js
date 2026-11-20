@@ -33,17 +33,6 @@ export const TITRATIONS = [
   { key: 'aprilTrial2', sample: 'april', name: 'April trial 2', phrase: 'April trial 2' },
 ];
 
-/** 
- * Choices for whether a bay water sample was diluted. '' means not answered.
- * 
- * @category Titration
- */
-export const DILUTION_CHOICES = [
-  { value: '', text: 'Not answered' },
-  { value: 'no', text: 'No' },
-  { value: 'yes', text: 'Yes, 1 milliliter diluted to 10 milliliters' },
-];
-
 /**
  * Every number the student can record. `kind` matches the instrument the
  * value is read from, so a pipet reading can only be recorded as a sample
@@ -83,15 +72,13 @@ function withIds(fields, owner) {
 
 /**
  * Everything the student has written down for the titration: number fields
- * (same as MolarMassReport), whether each bay water sample was diluted, and
- * for each titration a list of readings. Each reading is a buret reading and
+ * (same as MolarMassReport), and for each titration a list of readings. Each reading is a buret reading and
  * a voltage, kept as the text that was shown.
  * 
  * @category Titration
  */
 export class TitrationReport {
   values = {};
-  diluted = {};
   readings = {};
 
   constructor() {
@@ -100,7 +87,6 @@ export class TitrationReport {
 
   clear() {
     this.values = Object.fromEntries(this.fields().map((field) => [field.id, '']));
-    this.diluted = Object.fromEntries(SAMPLES.filter((sample) => sample.bayWater).map((sample) => [sample.key, '']));
     this.readings = Object.fromEntries(TITRATIONS.map((titration) => [titration.key, []]));
   }
 
@@ -143,11 +129,6 @@ export class TitrationReport {
     this.values[id] = String(text);
   }
 
-  setDiluted(sampleKey, value) {
-    if (sampleKey in this.diluted && DILUTION_CHOICES.some((choice) => choice.value === value))
-      this.diluted[sampleKey] = value;
-  }
-
   /** Adds a reading to a titration's list and returns its number (starting at 1). */
   addReading(titrationKey, buret, voltage) {
     this.readings[titrationKey].push({ buret: String(buret), voltage: String(voltage) });
@@ -159,7 +140,7 @@ export class TitrationReport {
     return this.readings[titrationKey].pop();
   }
 
-  /** Removes every reading from a titration, e.g. to start it again after diluting. */
+  /** Removes every reading from a titration, e.g. to start it again. */
   clearReadings(titrationKey) {
     this.readings[titrationKey] = [];
   }
