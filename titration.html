@@ -13,8 +13,9 @@
 
 	<body>
 		<header>
+			<p><a href="index.html">Back to all experiments</a></p>
 			<h1>Salinity of Bay Water by Titration</h1>
-			<p>Find the salinity of bay water samples from the San Antonio Bay, collected in March (a rainy month) and April, by titrating their chloride with silver nitrate. Instead of watching for a colour change, you measure the voltage between two electrodes, which jumps sharply at the equivalence point.</p>
+			<p>Find the salinity of bay water samples from the San Antonio Bay, collected in March (a rainy month) and April, by titrating their chloride with silver nitrate. Instead of watching for a color change, you measure the voltage between two electrodes, which jumps sharply at the equivalence point.</p>
 			<nav aria-label="Experiment sections">
 				<ul role="list">
 					<li><button type="button" data-view="bench">Lab bench</button></li>
@@ -28,16 +29,41 @@
 
 		<main id="main"></main>
 
-		<footer>
-			<p><a href="index.html">Back to all experiments</a></p>
-		</footer>
-
 		<noscript>This experiment requires JavaScript.</noscript>
 
 		<!-- Views are filled in by src/pageBuilder.js. Lists are numbered (<ol>)
 		     so it is easy to keep track of position within them. -->
+
+		<!-- Shown once when the page loads, before the lab bench. The water
+		     sample is chosen here and can't be changed once the experiment starts. -->
+		<template id="intro-view">
+			<h2>Before you start</h2>
+			<p>This experiment is all text: no pictures, dragging or timing. Here is how the page is set up.</p>
+			<h3>Sections</h3>
+			<p>Once you start, three buttons under the page title switch between the sections. The one you are in is marked as the current page.</p>
+			<ul>
+				<li><strong>Lab bench</strong>: a numbered list of the equipment, called stations. Choose one to use it.</li>
+				<li><strong>Procedure</strong>: the steps of the experiment. Each step names the station where you do it.</li>
+				<li><strong>Report</strong>: where you write down your readings and calculations. Nothing is calculated or checked for you.</li>
+			</ul>
+			<h3>Using a station</h3>
+			<ul>
+				<li>A station shows a short description, its current state, and a list of actions you can take.</li>
+				<li>Some actions have a dropdown before their button. Choosing from the dropdown only picks an option; nothing happens until you press the button.</li>
+				<li>After each action, a sentence saying what happened appears under the page title, and the station's state is updated.</li>
+				<li>To save a reading in the report, take the reading first, then use the record action that appears after it.</li>
+				<li>"Back to lab bench" returns you to the list of stations.</li>
+			</ul>
+			<p>Your report is kept while you move between sections, but is cleared if the page is reloaded.</p>
+			<h3>Choose your water sample</h3>
+			<p>Bay water was collected at ten sites in San Antonio Bay, once in March and again in April. Choose a site; you will titrate both its March and April samples. The site can't be changed after you start.</p>
+			<div data-slot="sampleField" data-item-template="select-field"></div>
+			<button type="button" data-click="start">Start the experiment</button>
+		</template>
+
 		<template id="bench-view">
 			<h2>Lab bench</h2>
+			<p data-slot="sample"></p>
 			<p>Choose a piece of equipment to use it.</p>
 			<ol data-slot="stations" data-item-template="button-item"></ol>
 		</template>
@@ -63,24 +89,26 @@
 				<li>Fill Beaker 1 to the 10 milliliter mark and place it under the buret.</li>
 				<li>Place the electrodes in Beaker 1.</li>
 				<li>Calculate how much silver nitrate 1.0 milliliter of 0.040 molar sodium chloride needs, and record it.</li>
-				<li>At the buret and voltmeter, read and record a starting reading as the practice titration. Then add silver nitrate, reading and recording after each addition, until the voltage has jumped and levelled off. Near the jump, add 1 drop or 0.1 milliliters at a time.</li>
+				<li>At the buret and voltmeter, read and record a starting reading as the practice titration. Then add silver nitrate, reading and recording after each addition, until the voltage has jumped and leveled off. Near the jump, add 1 drop or 0.1 milliliters at a time.</li>
 				<li>To clean up, take the electrodes out and rinse them, then take Beaker 1 out from under the buret and empty and rinse it.</li>
-				<li>At the serological pipet, rinse the pipet with March bay water. Pipet 1.0 milliliter into each of Beakers 1, 2 and 3, and record the volume once.</li>
+				<li>At the serological pipet, rinse the pipet with March bay water. Draw 1.0 milliliter and release it into the volumetric flask.</li>
+				<li>At the volumetric flask, fill it to the mark with distilled water and mix. The flask now holds the sample diluted 1 to 10. Every bay water sample is diluted this way before it is titrated.</li>
+				<li>At the serological pipet, rinse the pipet from the volumetric flask. Pipet 1.0 milliliter of the diluted sample into each of Beakers 1, 2 and 3, and read and record the volume once.</li>
 				<li>Fill Beakers 1, 2 and 3 to the 20 milliliter mark.</li>
-				<li>At the silver nitrate cylinder, measure 10 milliliters and pour it into the buret.</li>
-				<li>For the fast titration, titrate Beaker 1 as in steps 5, 6 and 8, recording it as the March fast titration. Add about 0.5 to 1 milliliter at a time to find roughly where the jump is, then clean up as in step 9.</li>
-				<li>Only if the fast titration passed 10 milliliters without a jump: empty and rinse the beakers, pipet 1.0 milliliter of sample into the volumetric flask, then fill the flask to the mark. Redo steps 10 to 13 with the diluted sample from the flask, and answer "Was this sample diluted?" in the report.</li>
+				<li>Before each titration, top up the buret: at the silver nitrate cylinder, measure 15 milliliters and pour it into the buret, until the buret reads 20 milliliters or less.</li>
+				<li>For the fast titration, titrate Beaker 1 as in steps 5, 6 and 8, recording it as the March fast titration. Add about 1 milliliter at a time to find roughly where the jump is, then clean up as in step 9.</li>
 				<li>For the trials, titrate Beaker 2 as March trial 1 and then Beaker 3 as March trial 2, the same way. Add larger amounts until you are about 0.5 milliliters from the jump, then 1 drop or 0.1 milliliters at a time. Clean up after each.</li>
-				<li>Repeat steps 10 to 15 for April bay water.</li>
+				<li>Empty and rinse the volumetric flask, then repeat steps 10 to 16 for April bay water.</li>
 				<li>Empty the waste beaker into the labeled waste container.</li>
 				<li>For each sample, average the volume added in trials 1 and 2. The moles of silver nitrate (0.010 moles per liter times liters) equal the moles of sodium chloride. Multiply by 58.44 grams per mole for grams.</li>
-				<li>Salinity in parts per thousand is the grams of sodium chloride divided by the grams of bay water, times 1000. Use 1 gram per milliliter of bay water, or 0.1 grams if it was diluted.</li>
+				<li>Salinity in parts per thousand is the grams of sodium chloride divided by the grams of bay water, times 1000. Each beaker holds 1.0 milliliter of the 1 to 10 dilution, which is 0.1 milliliters of bay water, so use 0.1 grams of bay water.</li>
 			</ol>
 		</template>
 
 		<template id="report-view">
 			<h2>Report</h2>
 			<p>Keep track of your measurements and calculations here as you work through the titrations. Nothing is calculated or checked for you. Values are kept while you move between sections, but are cleared if the page is reloaded.</p>
+			<p data-slot="sample"></p>
 
 			<h3>Measurements</h3>
 			<div data-slot="samples" data-item-template="sample-section"></div>
@@ -151,7 +179,7 @@
 			</div>
 		</template>
 
-		<!-- A labelled dropdown in the report, styled like the number fields. -->
+		<!-- A labeled dropdown in the report, styled like the number fields. -->
 		<template id="select-field">
 			<div class="field">
 				<label data-slot="label" data-attr-for="id"></label>

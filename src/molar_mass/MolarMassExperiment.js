@@ -453,7 +453,7 @@ export class MolarMassExperiment {
         [...page.root.querySelectorAll('button')].find((button) => button.textContent === action.focusAfter)?.focus();
     };
 
-    // An action is a button, or a labelled dropdown followed by a button.
+    // An action is a button, or a labeled dropdown followed by a button.
     const actionItem = (action) => {
       const item = { label: action.label, click: () => perform(action) };
       if (!action.select)
@@ -505,7 +505,12 @@ export class MolarMassExperiment {
       },
     }));
 
-    page.show('bench', false);
+    // Shown first, explaining how the page is laid out.
+    page.addView('intro', 'intro-view', () => ({
+      start: () => page.finishIntro('bench'),
+    }));
+
+    page.showIntro('intro');
   }
 }
 

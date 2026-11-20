@@ -18,7 +18,7 @@ nav ul {
   display: flex;
   flex-wrap: wrap;
 }
-/* The open section is shown with a thick underline and bold text, not colour alone. */
+/* The open section is shown with a thick underline and bold text, not color alone. */
 nav [aria-current] {
   font-weight: bold;
   box-shadow: inset 0 -4px 0 #1a1a1a;

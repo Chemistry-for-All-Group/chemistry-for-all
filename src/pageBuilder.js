@@ -116,6 +116,35 @@ export class PageBuilder {
       this.heading().focus();
   }
 
+  /**
+   * Shows an introduction view before the experiment starts. The section
+   * nav is hidden until finishIntro() is called, so the introduction is
+   * the only thing to read and its start button is the only way forward.
+   *
+   * @param {String} id the intro view
+   */
+  showIntro(id) {
+    this.nav().hidden = true;
+    this.show(id, false);
+  }
+
+  /**
+   * Leaves the introduction, shows the section nav and opens a view. The
+   * introduction is left out of the history, so it can't be gone back to.
+   *
+   * @param {String} id the view to open, usually the lab bench
+   */
+  finishIntro(id) {
+    this.nav().hidden = false;
+    this.currentView = null;
+    this.history = [];
+    this.show(id);
+  }
+
+  nav() {
+    return document.querySelector('header nav');
+  }
+
   /** Returns to the previous view, or the first registered view. */
   back() {
     this.renderView(this.history.pop() ?? Object.keys(this.views)[0]);

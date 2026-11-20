@@ -3,9 +3,10 @@
  */
 import { jest } from "@jest/globals";
 import { readFileSync } from "node:fs";
-import { TitrationLab, PIPET_VOLUME } from "./TitrationLab.js";
+import { TitrationLab, PIPET_VOLUME, SAMPLE_SITES, DILUTION_FACTOR } from "./TitrationLab.js";
 import SilverNitrate from "./liquids/SilverNitrate.js";
 import MarchSample from "./liquids/MarchSample.js";
+import AprilSample from "./liquids/AprilSample.js";
 import Water from "./liquids/Water.js";
 
 describe("TitrationLab", () => {
@@ -139,6 +140,43 @@ describe("TitrationLab", () => {
     });
   });
 
+  describe("sample sites", () => {
+    test("Should offer every site that has both March and April data", () => {
+      expect(SAMPLE_SITES.map((site) => site.id)).toStrictEqual(Object.keys(AprilSample.aprilSampleValues));
+      expect(SAMPLE_SITES.find((site) => site.id === "28429677").name).toMatch(/: 28.42 degrees north, 96.77 degrees west$/);
+    });
+
+    test("Should fill the sample bottles so the diluted sample matches the data", () => {
+      const site = SAMPLE_SITES[3].id;
+      lab.selectSampleSite(site);
+      expect(lab.sampleSite).toBe(site);
+      expect(MarchSample.molarConcentration).toBeCloseTo(MarchSample.marchSampleValues[site] * DILUTION_FACTOR);
+      expect(AprilSample.molarConcentration).toBeCloseTo(AprilSample.aprilSampleValues[site] * DILUTION_FACTOR);
+    });
+
+    test("Should ignore a site with no data", () => {
+      lab.selectSampleSite("12345678");
+      expect(lab.sampleSite).toBe(SAMPLE_SITES[0].id);
+    });
+
+    test("Should reach the equivalence point at the volume the diluted data gives", () => {
+      const site = SAMPLE_SITES[0].id;
+      lab.selectSampleSite(site);
+      lab.setPipetSource("march");
+      lab.drawSample();
+      lab.setPipetTarget("flask");
+      lab.releasePipet();
+      lab.fillFlaskToMark();
+      lab.setPipetSource("flask");
+      lab.drawSample();
+      lab.setPipetTarget("beaker1");
+      lab.releasePipet();
+      // 1 mL of the diluted sample at the data's concentration, titrated with 0.010 M silver nitrate.
+      const expected = MarchSample.marchSampleValues[site] * 1 / 0.01;
+      expect(lab.equipment.beaker1.expectedEquivalencePoint()).toBeCloseTo(expected);
+    });
+  });
+
   describe("dilution", () => {
     test("Should dilute 1 mL of sample tenfold in the volumetric flask", () => {
       lab.setPipetSource("march");
@@ -266,6 +304,41 @@ describe("TitrationLab", () => {
     const main = () => document.getElementById("main");
     const button = (label) => [...main().querySelectorAll("button")].find((item) => item.textContent === label);
 
+    describe("introduction", () => {
+      test("Should show the introduction first with the sections hidden", () => {
+        expect(main().querySelector("h2").textContent).toBe("Before you start");
+        expect(document.querySelector("header nav").hidden).toBe(true);
+        expect(document.querySelector('label[for="sample-site"]').textContent).toBe("Water sample site");
+        expect(document.getElementById("sample-site").options).toHaveLength(SAMPLE_SITES.length);
+      });
+
+      test("Should only use the chosen sample once the experiment starts", () => {
+        const select = document.getElementById("sample-site");
+        select.value = SAMPLE_SITES[2].id;
+        select.dispatchEvent(new Event("change"));
+        expect(lab.sampleSite).toBe(SAMPLE_SITES[0].id);
+
+        button("Start the experiment").click();
+        expect(lab.sampleSite).toBe(SAMPLE_SITES[2].id);
+        expect(main().querySelector("h2").textContent).toBe("Lab bench");
+        expect(document.activeElement).toBe(main().querySelector("h2"));
+        expect(document.querySelector("header nav").hidden).toBe(false);
+        expect(main().textContent).toContain(SAMPLE_SITES[2].name);
+      });
+    });
+  });
+
+  describe("page after starting", () => {
+    beforeEach(() => {
+      const html = readFileSync(new URL("../../titration.html", import.meta.url), "utf8");
+      document.documentElement.innerHTML = html.replace(/<script[\s\S]*?<\/script>/g, "");
+      lab.start();
+      button("Start the experiment").click();
+    });
+
+    const main = () => document.getElementById("main");
+    const button = (label) => [...main().querySelectorAll("button")].find((item) => item.textContent === label);
+
     test("Should list every station on the lab bench", () => {
       const labels = [...main().querySelectorAll("ol button")].map((item) => item.textContent);
       expect(labels).toStrictEqual(lab.stations().map((station) => station.title));
@@ -294,7 +367,7 @@ describe("TitrationLab", () => {
         "March fast titration readings", "March trial 1 readings", "March trial 2 readings",
         "April fast titration readings", "April trial 1 readings", "April trial 2 readings",
       ]);
-      expect(document.querySelector('label[for="report-march-diluted"]').textContent).toBe("Was this sample diluted?");
+      expect(document.getElementById("report-march-diluted")).toBeNull();
       expect(document.getElementById("report-april-salinity")).not.toBeNull();
     });
 

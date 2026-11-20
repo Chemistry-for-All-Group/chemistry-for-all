@@ -13,6 +13,7 @@
 
 	<body>
 		<header>
+			<p><a href="index.html">Back to all experiments</a></p>
 			<h1>Molar Mass of Butane</h1>
 			<p>Collect butane gas over water and use your measurements to find the molar mass of butane.</p>
 			<nav aria-label="Experiment sections">
@@ -28,14 +29,34 @@
 
 		<main id="main"></main>
 
-		<footer>
-			<p><a href="index.html">Back to all experiments</a></p>
-		</footer>
-
 		<noscript>This experiment requires JavaScript.</noscript>
 
 		<!-- Views are filled in by src/pageBuilder.js. Lists are numbered (<ol>)
 		     so it is easy to keep track of position within them. -->
+
+		<!-- Shown once when the page loads, before the lab bench. -->
+		<template id="intro-view">
+			<h2>Before you start</h2>
+			<p>This experiment is all text: no pictures, dragging or timing. Here is how the page is set up.</p>
+			<h3>Sections</h3>
+			<p>Once you start, three buttons under the page title switch between the sections. The one you are in is marked as the current page.</p>
+			<ul>
+				<li><strong>Lab bench</strong>: a numbered list of the equipment, called stations. Choose one to use it.</li>
+				<li><strong>Procedure</strong>: the steps of the experiment. Each step names the station where you do it.</li>
+				<li><strong>Report</strong>: where you write down your readings and calculations. Nothing is calculated or checked for you.</li>
+			</ul>
+			<h3>Using a station</h3>
+			<ul>
+				<li>A station shows a short description, its current state, and a list of actions you can take.</li>
+				<li>Some actions have a dropdown before their button. Choosing from the dropdown only picks an option; nothing happens until you press the button.</li>
+				<li>After each action, a sentence saying what happened appears under the page title, and the station's state is updated.</li>
+				<li>To save a reading in the report, take the reading first, then use the record action that appears after it.</li>
+				<li>"Back to lab bench" returns you to the list of stations.</li>
+			</ul>
+			<p>Your report is kept while you move between sections, but is cleared if the page is reloaded.</p>
+			<button type="button" data-click="start">Start the experiment</button>
+		</template>
+
 		<template id="bench-view">
 			<h2>Lab bench</h2>
 			<p>Choose a piece of equipment to use it.</p>

@@ -5,7 +5,7 @@ import MarchSample from "./liquids/MarchSample.js";
 import AprilSample from "./liquids/AprilSample.js";
 import SilverNitrate from "./liquids/SilverNitrate.js";
 import Water from "./liquids/Water.js";
-import { TitrationReport, SAMPLES, TITRATIONS, DILUTION_CHOICES } from "./TitrationReport.js";
+import { TitrationReport, SAMPLES, TITRATIONS } from "./TitrationReport.js";
 import { announce, PageBuilder } from "../pageBuilder.js";
 
 /** 
@@ -27,7 +27,7 @@ export const BURET_INCREMENTS = [0.05, 0.1, 0.2, 0.5, 1, 2];
  * 
  * @category Titration
  */
-export const SILVER_NITRATE_AMOUNTS = [15, 10];
+export const SILVER_NITRATE_AMOUNTS = [10, 15, 25];
 
 /** 
  * Amount of sodium chloride standard to measure out in the 10 mL cylinder, in mL.
@@ -57,6 +57,27 @@ export const BEAKER_MARKS = [10, 20];
  * @category Titration
  */
 export const MIN_LEVEL_FOR_READING = 8;
+
+/**
+ * How much the volumetric flask dilutes a bay water sample: 1 mL of sample
+ * filled to the 10 mL mark.
+ *
+ * @category Titration
+ */
+export const DILUTION_FACTOR = 10;
+
+/**
+ * The sites in San Antonio Bay that bay water was collected from. Each id is
+ * the site's position packed into digits (28429677 is 28.42 degrees north,
+ * 96.77 degrees west), and is the key into MarchSample.marchSampleValues and
+ * AprilSample.aprilSampleValues.
+ *
+ * @category Titration
+ */
+export const SAMPLE_SITES = Object.keys(MarchSample.marchSampleValues).map((id, index) => ({
+  id,
+  name: `Site ${index + 1}: ${id.slice(0, 2)}.${id.slice(2, 4)} degrees north, ${id.slice(4, 6)}.${id.slice(6, 8)} degrees west`,
+}));
 
 // Distilled water used to rinse a beaker, flask or the electrodes into the waste beaker, in mL.
 const RINSE_WATER = 5;
@@ -94,7 +115,7 @@ function capitalize(text) {
 /**
  * The titration experiment: finding the salinity of bay water samples by
  * titrating their chloride with silver nitrate, measuring the voltage
- * between two electrodes instead of watching for a colour change.
+ * between two electrodes instead of watching for a color change.
  *
  * Keeps track of where each piece of equipment is and uses the backend
  * classes to do each action. Action methods return a sentence describing
@@ -142,6 +163,9 @@ export class TitrationLab {
   // What the pipet was last rinsed with (a pipetSources id), for the station's state.
   pipetRinsedWith = null;
 
+  // The SAMPLE_SITES id the March and April bay water came from.
+  sampleSite = null;
+
   report = new TitrationReport();
   // Where each "Record as" dropdown records to: a report field id for the
   // sample volume, a titration key for buret and voltmeter readings.
@@ -149,6 +173,31 @@ export class TitrationLab {
   // The last reading taken, as the text that was shown. A titration reading
   // is a buret reading and a voltage taken together.
   lastReadings = { sampleVolume: null, titration: null };
+
+  constructor() {
+    this.selectSampleSite(SAMPLE_SITES[0].id);
+  }
+
+  /**
+   * Chooses which site's March and April bay water is in the sample bottles.
+   *
+   * The data for each site is the chloride concentration after the sample
+   * has been diluted in the volumetric flask, so the bottles hold
+   * DILUTION_FACTOR times that. Diluting 1 mL to 10 mL then gives exactly
+   * the measured concentration.
+   */
+  selectSampleSite(id) {
+    if (!(id in MarchSample.marchSampleValues) || !(id in AprilSample.aprilSampleValues))
+      return;
+    this.sampleSite = id;
+    MarchSample.molarConcentration = MarchSample.marchSampleValues[id] * DILUTION_FACTOR;
+    AprilSample.molarConcentration = AprilSample.aprilSampleValues[id] * DILUTION_FACTOR;
+  }
+
+  /** The chosen site's name, e.g. "Site 1: 28.42 degrees north, 96.77 degrees west". */
+  sampleSiteName() {
+    return SAMPLE_SITES.find((site) => site.id === this.sampleSite).name;
+  }
 
   stockBottle(liquid) {
     const bottle = new MultiFillableObject(1000);
@@ -778,7 +827,7 @@ export class TitrationLab {
       },
       {
         id: 'flask', title: 'Volumetric flask',
-        description: 'A 10 milliliter volumetric flask, for diluting a bay water sample that needs more than 10 milliliters of silver nitrate: 1.0 milliliter of sample filled to the mark with distilled water.',
+        description: 'A 10 milliliter volumetric flask, for diluting each bay water sample before it is titrated: 1.0 milliliter of sample filled to the mark with distilled water.',
         state: () => [this.holds('The flask', this.flask)],
         actions: () => {
           const level = this.flask.getCurrentLevel();
@@ -835,7 +884,7 @@ export class TitrationLab {
         [...page.root.querySelectorAll('button')].find((button) => button.textContent === action.focusAfter)?.focus();
     };
 
-    // An action is a button, or a labelled dropdown followed by a button.
+    // An action is a button, or a labeled dropdown followed by a button.
     const actionItem = (action) => {
       const item = { label: action.label, click: () => perform(action) };
       if (!action.select)
@@ -850,7 +899,10 @@ export class TitrationLab {
       };
     };
 
+    const sampleNote = () => `Your bay water samples are from ${this.sampleSiteName()}.`;
+
     page.addView('bench', 'bench-view', () => ({
+      sample: sampleNote(),
       stations: stations.map((station) => ({ label: station.title, click: () => page.show(station.id) })),
     }));
 
@@ -901,19 +953,11 @@ export class TitrationLab {
     // Typing in the report only stores the value; the view is not redrawn,
     // so focus and the cursor stay in the field being edited.
     page.addView('report', 'report-view', () => ({
+      sample: sampleNote(),
       samples: SAMPLES.map((sample) => ({
         heading: sample.bayWater ? sample.name : `Practice: ${sample.name.charAt(0).toLowerCase() + sample.name.slice(1)}`,
         legend: `${sample.name} sample`,
-        fields: [
-          ...this.report.sampleFields(sample.key).map((field) => this.reportFieldData(field)),
-          sample.bayWater ? {
-            template: 'select-field',
-            id: `report-${sample.key}-diluted`,
-            label: 'Was this sample diluted?',
-            options: DILUTION_CHOICES.map((choice) => ({ ...choice, selected: choice.value === this.report.diluted[sample.key] })),
-            change: (event) => this.report.setDiluted(sample.key, event.target.value),
-          } : null,
-        ].filter(Boolean),
+        fields: this.report.sampleFields(sample.key).map((field) => this.reportFieldData(field)),
         titrations: TITRATIONS.filter((titration) => titration.sample === sample.key).map(titrationData),
       })),
       calculations: SAMPLES.filter((sample) => sample.bayWater).map((sample) => ({
@@ -930,7 +974,24 @@ export class TitrationLab {
       },
     }));
 
-    page.show('bench', false);
+    // Shown first, explaining how the page is laid out and choosing the
+    // water sample. The dropdown only stores the choice; it is applied when
+    // Start is pressed.
+    let chosenSite = this.sampleSite;
+    page.addView('intro', 'intro-view', () => ({
+      sampleField: [{
+        id: 'sample-site',
+        label: 'Water sample site',
+        options: SAMPLE_SITES.map((site) => ({ value: site.id, text: site.name, selected: site.id === chosenSite })),
+        change: (event) => { chosenSite = event.target.value; },
+      }],
+      start: () => {
+        this.selectSampleSite(chosenSite);
+        page.finishIntro('bench');
+      },
+    }));
+
+    page.showIntro('intro');
   }
 }
 

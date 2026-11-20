@@ -106,7 +106,7 @@ class Cylinder extends FillableObject {
   }
 
   /**
-   * Sets whether or not the cylinder's water level is levelled with the water trough's water level.
+   * Sets whether or not the cylinder's water level is leveled with the water trough's water level.
    *
    * If the cylinder is leveled with the trough's water, getDisplacedLevel will return
    * a more accurate reading. The cylinder must first be inverted in a WaterTrough
