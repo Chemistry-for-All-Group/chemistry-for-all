@@ -268,7 +268,7 @@ describe("MolarMassExperiment", () => {
   });
 
   describe("stations", () => {
-    test("Should provide all eight stations", () => {
+    test("Should provide all seven stations", () => {
       expect(experiment.stations().map((station) => station.id))
         .toStrictEqual([
           "sink",
@@ -277,8 +277,7 @@ describe("MolarMassExperiment", () => {
           "tubing",
           "lighter",
           "scale",
-          "thermometer",
-          "barometer",
+          "conditions"
         ]);
     });
 
