@@ -150,6 +150,7 @@ describe("MolarMassExperiment", () => {
     });
 
     test("Should report escaping gas without tubing", () => {
+      experiment.setReleaseIncrement(0.5);
       expect(experiment.pressLighterValve()).toContain(
         "No tubing is attached"
       );
@@ -179,8 +180,10 @@ describe("MolarMassExperiment", () => {
       prepareCollection();
       const initialMass = experiment.lighter.getMass();
 
+      experiment.setReleaseIncrement(0.5);
+
       expect(experiment.pressLighterValve()).toContain(
-        "rise into the cylinder"
+        "rises into the cylinder"
       );
 
       expect(experiment.lighter.mlOfButane).toBeCloseTo(299.5, 8);
@@ -197,6 +200,7 @@ describe("MolarMassExperiment", () => {
     test("Should stop collecting while leveled and resume when lowered", () => {
       prepareCollection();
       experiment.setCylinderLeveled(true);
+      experiment.setReleaseIncrement(0.5);
 
       expect(experiment.pressLighterValve()).toContain(
         "not positioned over the outlet"
